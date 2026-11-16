@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Biología – 1er Año | Reproducción, División Celular, Selección Natural y Evolución</title>
+<style>
+:root{
+  --bg:#f6f7fb; --card:#fff; --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb;
+  --c1:#e11d74; --c1s:#fde7f1;   /* Reproducción */
+  --c2:#2563eb; --c2s:#e3ecfe;   /* División */
+  --c3:#16a34a; --c3s:#e2f6e8;   /* Selección */
+  --c4:#d97706; --c4s:#fdf0dc;   /* Evolución */
+  --c5:#7c3aed; --c5s:#efe7fd;   /* Práctica/Examen */
+  --ok:#16a34a; --bad:#dc2626; --radius:16px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+header{background:linear-gradient(120deg,#1e3a8a,#7c3aed 55%,#db2777);color:#fff;padding:28px 20px 70px;text-align:center;position:relative;overflow:hidden}
+header h1{margin:0 0 6px;font-size:clamp(1.6rem,4vw,2.4rem)}
+header p{margin:0;opacity:.92}
+header .badge{display:inline-block;background:rgba(255,255,255,.18);padding:4px 12px;border-radius:99px;font-size:.85rem;margin-bottom:10px}
+.dna{position:absolute;opacity:.12;font-size:9rem;top:-20px;right:-10px;transform:rotate(20deg)}
+nav{position:sticky;top:0;z-index:20;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:10px;margin:-48px auto 0;max-width:1100px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+nav button{border:0;background:transparent;padding:9px 14px;border-radius:12px;font-weight:600;cursor:pointer;color:var(--muted);font-size:.95rem;transition:.2s}
+nav button:hover{background:#f1f5f9;color:var(--ink)}
+nav button.active{color:#fff}
+nav button[data-t="rep"].active{background:var(--c1)}
+nav button[data-t="div"].active{background:var(--c2)}
+nav button[data-t="sel"].active{background:var(--c3)}
+nav button[data-t="evo"].active{background:var(--c4)}
+nav button[data-t="pra"].active,nav button[data-t="exa"].active,nav button[data-t="tip"].active{background:var(--c5)}
+.progress{max-width:1100px;margin:10px auto 0;padding:0 16px;font-size:.85rem;color:var(--muted)}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:4px}
+.bar>div{height:100%;width:0;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4));transition:width .5s}
+main{max-width:1100px;margin:0 auto;padding:16px}
+section.tab{display:none;animation:fade .35s}
+section.tab.show{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border-radius:var(--radius);padding:22px;margin:16px 0;box-shadow:0 2px 10px rgba(0,0,0,.05);border:1px solid var(--line)}
+.hero{display:flex;gap:18px;align-items:center;border-left:8px solid var(--accent);background:var(--soft)}
+.hero .ico{font-size:3.2rem}
+.hero h2{margin:0}
+h2{font-size:1.5rem;margin-top:0}
+h3{margin:.2em 0 .5em;color:var(--accent)}
+.step-title{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;color:var(--accent);margin:0 0 10px}
+.step-title span{background:var(--accent);color:#fff;border-radius:10px;padding:2px 10px;font-size:.85rem}
+.analogy{background:var(--soft);border-radius:12px;padding:14px 16px;border:2px dashed var(--accent);margin:12px 0}
+.analogy b:first-child{color:var(--accent)}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.mini{background:#fafafa;border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+.mini .e{font-size:2.2rem}
+.mini b{display:block;margin:4px 0;color:var(--accent)}
+.mini small{color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--soft);color:var(--accent)}
+.key{background:#fffbea;border-left:5px solid #f59e0b;padding:12px 14px;border-radius:10px;margin:12px 0}
+.solved{border:2px solid var(--soft);border-radius:12px;padding:14px;margin:10px 0}
+.solved ol{margin:6px 0 0 0;padding-left:20px}
+.solved .q{font-weight:700}
+/* flip cards */
+.flip{perspective:900px;height:150px;cursor:pointer}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-weight:600}
+.flip .f{background:var(--accent);color:#fff;font-size:1.1rem}
+.flip .b{background:var(--soft);transform:rotateY(180deg);font-weight:500;font-size:.92rem;border:2px solid var(--accent)}
+.hint{color:var(--muted);font-size:.85rem;text-align:center}
+/* buttons */
+.btn{border:0;background:var(--accent,#7c3aed);color:#fff;padding:10px 16px;border-radius:12px;font-weight:700;cursor:pointer;font-size:.95rem;transition:.15s}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+/* quick check */
+.qc{margin:10px 0;padding:12px;border-radius:12px;background:#f8fafc;border:1px solid var(--line)}
+.qc .opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.qc .opts button{border:2px solid var(--line);background:#fff;padding:7px 12px;border-radius:10px;cursor:pointer;font-size:.92rem}
+.qc .opts button.ok{border-color:var(--ok);background:#dcfce7}
+.qc .opts button.no{border-color:var(--bad);background:#fee2e2}
+.qc .fb{margin-top:6px;font-size:.9rem}
+/* mitosis */
+.stepper{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:10px 0}
+.stepper button{border:2px solid var(--c2);background:#fff;color:var(--c2);padding:6px 12px;border-radius:99px;font-weight:700;cursor:pointer;font-size:.88rem}
+.stepper button.on{background:var(--c2);color:#fff}
+.mitbox{display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:center}
+.mitbox svg{background:#f8fbff;border-radius:16px;border:1px solid var(--c2s)}
+.mitdesc{flex:1;min-width:240px}
+/* sim */
+.forest{position:relative;height:220px;border-radius:14px;overflow:hidden;transition:background .6s;border:1px solid var(--line)}
+.forest.clean{background:repeating-linear-gradient(100deg,#e9e4d6 0 18px,#d9d2bf 18px 26px,#efeadf 26px 44px)}
+.forest.dirty{background:repeating-linear-gradient(100deg,#3b3a37 0 18px,#2a2926 18px 26px,#44423e 26px 44px)}
+.moth{position:absolute;width:26px;height:16px;transition:all .5s}
+.moth.dead{opacity:0;transform:scale(.2) rotate(90deg)}
+.chart{display:flex;align-items:flex-end;gap:6px;height:130px;padding:8px;border-bottom:2px solid var(--line);overflow-x:auto}
+.chart .col{display:flex;flex-direction:column-reverse;width:30px;min-width:30px;height:100%}
+.chart .col div{width:100%}
+.chart .lab{font-size:.7rem;text-align:center;color:var(--muted)}
+.legend{display:flex;gap:16px;font-size:.85rem;color:var(--muted);margin-top:6px;flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+/* compare */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch}
+.vs .mid{display:flex;align-items:center;font-weight:900;font-size:1.4rem;color:var(--muted)}
+@media(max-width:640px){.vs{grid-template-columns:1fr}.vs .mid{justify-content:center}}
+/* timeline */
+.timeline{position:relative;margin:10px 0 0 10px;padding-left:22px;border-left:4px solid var(--c4s)}
+.timeline .ev{position:relative;margin-bottom:14px}
+.timeline .ev::before{content:"";position:absolute;left:-32px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--c4);border:3px solid #fff;box-shadow:0 0 0 2px var(--c4)}
+.timeline .ev b{color:var(--c4)}
+/* practice */
+.lvl{display:inline-block;font-size:.75rem;font-weight:800;padding:3px 10px;border-radius:99px;margin-bottom:6px;color:#fff}
+.lvl.l1{background:#22c55e}.lvl.l2{background:#f59e0b}.lvl.l3{background:#ef4444}
+details{background:#f8fafc;border-radius:10px;padding:10px 14px;margin-top:8px;border:1px solid var(--line)}
+details summary{cursor:pointer;font-weight:700;color:var(--c5)}
+textarea{width:100%;min-height:70px;border-radius:10px;border:1px solid var(--line);padding:10px;font-family:inherit;font-size:.95rem;margin-top:6px}
+/* exam */
+.exq{border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0;background:#fff}
+.exq .tag{font-size:.72rem;font-weight:800;padding:2px 9px;border-radius:99px;color:#fff;margin-right:6px}
+.exq label{display:block;padding:9px 12px;margin:6px 0;border:2px solid var(--line);border-radius:10px;cursor:pointer;transition:.15s}
+.exq label:hover{border-color:#c4b5fd;background:#faf5ff}
+.exq input{margin-right:8px;accent-color:var(--c5)}
+.exq label.right{border-color:var(--ok);background:#dcfce7}
+.exq label.wrong{border-color:var(--bad);background:#fee2e2}
+.exq .exp{display:none;margin-top:8px;font-size:.9rem;background:#f5f3ff;padding:10px;border-radius:10px}
+.done .exq .exp{display:block}
+.result{text-align:center}
+.grade{font-size:4rem;font-weight:900;margin:0;line-height:1}
+.topicbars .row{display:flex;align-items:center;gap:10px;margin:6px 0}
+.topicbars .row span{width:150px;font-size:.9rem}
+.topicbars .row .t{flex:1;height:14px;background:var(--line);border-radius:99px;overflow:hidden}
+.topicbars .row .t div{height:100%;border-radius:99px}
+.timer{font-weight:800;color:var(--c5)}
+.sticky-exam{position:sticky;top:70px;z-index:5;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.tipcard{border-top:6px solid var(--c5)}
+.tipcard .e{font-size:2rem}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 10px}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;background:var(--soft);color:var(--accent);font-weight:700;font-size:.85rem}
+.t-rep{--accent:var(--c1);--soft:var(--c1s)}
+.t-div{--accent:var(--c2);--soft:var(--c2s)}
+.t-sel{--accent:var(--c3);--soft:var(--c3s)}
+.t-evo{--accent:var(--c4);--soft:var(--c4s)}
+.t-pur{--accent:var(--c5);--soft:var(--c5s)}
+@media print{nav,.progress,.btn,.stepper{display:none!important}section.tab{display:block!important}header{padding-bottom:20px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="dna">🧬</div>
+  <div class="badge">📘 1er Año · Biología · Colegio Santa Ana</div>
+  <h1>La vida que se copia, cambia y evoluciona</h1>
+  <p>Guía de estudio interactiva: Reproducción · División celular · Selección natural · Evolución</p>
+</header>
+
+<nav id="nav">
+  <button data-t="rep" class="active">🌱 Reproducción</button>
+  <button data-t="div">🔬 División celular</button>
+  <button data-t="sel">🦋 Selección natural</button>
+  <button data-t="evo">🦴 Evolución</button>
+  <button data-t="pra">✏️ Práctica</button>
+  <button data-t="exa">📝 Examen</button>
+  <button data-t="tip">💡 Tips</button>
+</nav>
+<div class="progress">Tu recorrido: <b id="progTxt">1 de 7 secciones visitadas</b><div class="bar"><div id="progBar"></div></div></div>
+
+<main>
+
+<!-- ======================= REPRODUCCIÓN ======================= -->
+<section class="tab show t-rep" id="rep">
+  <div class="card hero"><div class="ico">🌱</div><div><h2>1. Reproducción</h2><p>¿Cómo hacen los seres vivos para que su especie no desaparezca?</p></div></div>
+
+  <div class="card">
+    <div class="step-title"><span>Introducción</span> ¿Qué es reproducirse?</div>
+    <p>La <b>reproducción</b> es la función por la cual un ser vivo origina nuevos individuos parecidos a él. No es necesaria para que <i>un</i> individuo sobreviva (podés vivir sin reproducirte), pero sí es <b>imprescindible para que la especie continúe</b> en el tiempo.</p>
+    <div class="analogy"><b>🍪 Analogía:</b> Pensá en una receta de galletitas. La <b>reproducción asexual</b> es fotocopiar la receta: todas las copias salen iguales. La <b>reproducción sexual</b> es mezclar la receta de tu abuela con la de tu tía: sale algo nuevo, parecido a las dos, pero distinto.</div>
+    <div class="grid g2">
+      <div class="mini"><div class="e">🧫➡️🧫🧫</div><b>Asexual</b><small>Un solo progenitor · sin gametos · hijos idénticos (clones) · rápida</small></div>
+      <div class="mini"><div class="e">♀️ + ♂️ ➡️ 👶</div><b>Sexual</b><small>Dos progenitores · gametos · hijos diferentes (variabilidad) · más lenta</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Tipos</span> Reproducción asexual</div>
+    <div class="grid g4">
+      <div class="mini"><div class="e">🦠</div><b>Bipartición</b><small>La célula se divide en dos iguales. Ej: bacterias, amebas.</small></div>
+      <div class="mini"><div class="e">🍞</div><b>Gemación</b><small>Sale un “brote” que se separa. Ej: levaduras, hidras.</small></div>
+      <div class="mini"><div class="e">⭐</div><b>Fragmentación</b><small>Un pedazo regenera un individuo completo. Ej: estrella de mar, planarias.</small></div>
+      <div class="mini"><div class="e">🍄</div><b>Esporulación</b><small>Se forman esporas que dan nuevos individuos. Ej: hongos, helechos.</small></div>
+      <div class="mini"><div class="e">🥔</div><b>Multiplicación vegetativa</b><small>Tallos, raíces o hojas originan plantas. Ej: papa, frutilla (estolones), gajos.</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Paso a paso</span> Reproducción sexual</div>
+    <svg viewBox="0 0 700 190" width="100%" style="max-width:700px;display:block;margin:auto">
+      <defs><marker id="ar1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#e11d74"/></marker></defs>
+      <circle cx="70" cy="50" r="34" fill="#fde7f1" stroke="#e11d74" stroke-width="3"/><text x="70" y="47" text-anchor="middle" font-size="13" font-weight="700">Óvulo</text><text x="70" y="64" text-anchor="middle" font-size="12">n = 23</text>
+      <ellipse cx="70" cy="145" rx="16" ry="11" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><path d="M86 145 q20 -10 40 0 q20 10 40 0" stroke="#2563eb" stroke-width="3" fill="none"/><text x="70" y="180" text-anchor="middle" font-size="13" font-weight="700">Espermatozoide · n = 23</text>
+      <path d="M115 55 L270 95" stroke="#e11d74" stroke-width="3" marker-end="url(#ar1)"/><path d="M175 140 L270 105" stroke="#e11d74" stroke-width="3" marker-end="url(#ar1)"/>
+      <text x="200" y="88" font-size="13" fill="#e11d74" font-weight="700">fecundación</text>
+      <circle cx="330" cy="100" r="42" fill="#fff" stroke="#7c3aed" stroke-width="4"/><text x="330" y="96" text-anchor="middle" font-size="14" font-weight="800">Cigoto</text><text x="330" y="114" text-anchor="middle" font-size="12">2n = 46</text>
+      <path d="M378 100 L450 100" stroke="#e11d74" stroke-width="3" marker-end="url(#ar1)"/><text x="385" y="90" font-size="12" fill="#e11d74">mitosis</text>
+      <g transform="translate(500,100)"><circle r="16" cx="-10" cy="-10" fill="#efe7fd" stroke="#7c3aed" stroke-width="2"/><circle r="16" cx="12" cy="-10" fill="#efe7fd" stroke="#7c3aed" stroke-width="2"/><circle r="16" cx="-10" cy="12" fill="#efe7fd" stroke="#7c3aed" stroke-width="2"/><circle r="16" cx="12" cy="12" fill="#efe7fd" stroke="#7c3aed" stroke-width="2"/></g>
+      <text x="500" y="150" text-anchor="middle" font-size="13" font-weight="700">Embrión</text>
+      <path d="M545 100 L610 100" stroke="#e11d74" stroke-width="3" marker-end="url(#ar1)"/><text x="655" y="108" text-anchor="middle" font-size="34">👶</text>
+    </svg>
+    <ol>
+      <li><b>Gametogénesis:</b> se forman las células sexuales o <b>gametos</b> (óvulos y espermatozoides) por <b>meiosis</b>. Tienen la <b>mitad</b> de cromosomas (n).</li>
+      <li><b>Fecundación:</b> se unen los dos gametos. Puede ser <b>externa</b> (en el agua: peces, ranas) o <b>interna</b> (dentro del cuerpo: mamíferos, aves, reptiles).</li>
+      <li><b>Cigoto:</b> primera célula del nuevo ser, con el número completo de cromosomas (2n = 46 en humanos).</li>
+      <li><b>Desarrollo:</b> el cigoto se divide por <b>mitosis</b> y forma el embrión. Puede ser <b>ovíparo</b> (en un huevo fuera de la madre), <b>vivíparo</b> (dentro de la madre) u <b>ovovivíparo</b> (huevo que eclosiona dentro de la madre).</li>
+    </ol>
+    <div class="key">🔑 <b>En plantas con flor</b> también hay reproducción sexual: el <b>polen</b> (gameto masculino) llega al <b>pistilo</b> por <b>polinización</b> (viento, insectos, aves) y fecunda al óvulo. El óvulo se transforma en <b>semilla</b> y el ovario en <b>fruto</b>.</div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Ejemplos resueltos</span> Razonamos juntos</div>
+    <div class="solved"><div class="q">📌 Ejemplo 1: Un agricultor quiere que todas sus frutillas tengan exactamente el mismo sabor que la planta madre. ¿Qué tipo de reproducción le conviene usar?</div>
+      <ol><li>Busco qué necesita: hijos <b>idénticos</b> a la madre.</li><li>¿Qué tipo de reproducción da copias idénticas? La <b>asexual</b>, porque hay un solo progenitor y no hay mezcla de información.</li><li>¿Qué forma usa la frutilla? Los <b>estolones</b> (tallos que crecen por el suelo y echan raíces): multiplicación vegetativa.</li><li><b>Respuesta:</b> reproducción asexual por estolones.</li></ol></div>
+    <div class="solved"><div class="q">📌 Ejemplo 2: Si una célula de la piel de un perro tiene 78 cromosomas, ¿cuántos tendrá un espermatozoide de ese perro? ¿Y el cigoto?</div>
+      <ol><li>Las células del cuerpo (somáticas) son <b>diploides</b>: 2n = 78.</li><li>Los gametos son <b>haploides</b>: tienen la mitad → n = 78 ÷ 2 = <b>39</b>.</li><li>El cigoto se forma con un gameto de cada padre: 39 + 39 = <b>78</b>.</li><li><b>Conclusión:</b> gracias a que los gametos tienen la mitad, el número de cromosomas se mantiene igual generación tras generación.</li></ol></div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Tarjetas</span> Tocá para dar vuelta</div>
+    <div class="grid g4">
+      <div class="flip"><div class="in"><div class="f">Gameto</div><div class="b">Célula sexual con la mitad de cromosomas (n). Óvulo o espermatozoide.</div></div></div>
+      <div class="flip"><div class="in"><div class="f">Cigoto</div><div class="b">Célula que resulta de la fecundación. Es diploide (2n).</div></div></div>
+      <div class="flip"><div class="in"><div class="f">Clon</div><div class="b">Individuo genéticamente idéntico a su progenitor. Resultado de la reproducción asexual.</div></div></div>
+      <div class="flip"><div class="in"><div class="f">Hermafrodita</div><div class="b">Organismo con órganos reproductores masculinos y femeninos. Ej: lombriz de tierra, caracol.</div></div></div>
+    </div>
+  </div>
+
+  <div class="card"><div class="step-title"><span>¿Entendiste?</span> Chequeo rápido</div><div class="qc-wrap" data-set="rep"></div></div>
+</section>
+
+<!-- ======================= DIVISIÓN CELULAR ======================= -->
+<section class="tab t-div" id="div">
+  <div class="card hero"><div class="ico">🔬</div><div><h2>2. División celular</h2><p>Toda célula proviene de otra célula. ¿Cómo se “copia” una célula?</p></div></div>
+
+  <div class="card">
+    <div class="step-title"><span>Introducción</span> El ciclo celular</div>
+    <p>Las células nacen, crecen, copian su información y se dividen. Este proceso se llama <b>ciclo celular</b> y tiene dos grandes etapas:</p>
+    <div class="grid g2">
+      <div class="mini"><div class="e">📚</div><b>Interfase (≈ 90% del tiempo)</b><small>La célula crece y <b>duplica su ADN</b>. ¡No está “descansando”, está trabajando muchísimo!</small></div>
+      <div class="mini"><div class="e">✂️</div><b>División (fase M)</b><small>Se reparte el material genético (<b>mitosis</b> o <b>meiosis</b>) y luego el citoplasma (<b>citocinesis</b>).</small></div>
+    </div>
+    <div class="analogy"><b>📖 Analogía:</b> Imaginá que tenés que dejarle tus apuntes completos a un compañero, pero vos también los necesitás. Primero los <b>fotocopiás</b> (interfase: duplicación del ADN), después los <b>ordenás</b> en pilas iguales y le das una a cada uno (mitosis). Los dos terminan con los apuntes completos.</div>
+    <div class="key">🔑 El ADN está guardado en los <b>cromosomas</b>, dentro del núcleo. Los humanos tenemos <b>46 cromosomas</b> (23 pares) en cada célula del cuerpo.</div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Interactivo</span> Mitosis paso a paso</div>
+    <p class="hint">Usá los botones para recorrer cada fase. Mirá qué pasa con los cromosomas.</p>
+    <div class="stepper" id="mitStep"></div>
+    <div class="mitbox">
+      <svg id="mitSvg" viewBox="0 0 300 220" width="320" height="235"></svg>
+      <div class="mitdesc"><h3 id="mitT"></h3><p id="mitD"></p><p class="pill" id="mitTip"></p>
+        <div style="margin-top:10px;display:flex;gap:8px"><button class="btn ghost" id="mitPrev">◀ Anterior</button><button class="btn" id="mitNext">Siguiente ▶</button></div></div>
+    </div>
+    <div class="key">🧠 <b>Truco para recordar el orden:</b> <b>P</b>ro–<b>M</b>eta–<b>A</b>na–<b>T</b>elo → “<b>P</b>apá <b>M</b>e <b>A</b>rmó <b>T</b>odo”.</div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Comparación</span> Mitosis vs. Meiosis</div>
+    <div class="vs">
+      <div class="mini" style="text-align:left"><div class="e">🧍➡️🧍🧍</div><b>MITOSIS</b>
+        <small>• 1 división<br>• 1 célula → <b>2 células</b><br>• Hijas <b>iguales</b> a la madre<br>• Mantiene el número: <b>2n → 2n</b><br>• Sirve para: <b>crecer, reparar tejidos</b> (cicatrizar), reproducción asexual</small></div>
+      <div class="mid">VS</div>
+      <div class="mini" style="text-align:left"><div class="e">🧍➡️👤👤👤👤</div><b>MEIOSIS</b>
+        <small>• 2 divisiones seguidas<br>• 1 célula → <b>4 células</b><br>• Hijas <b>diferentes</b> entre sí<br>• Reduce a la mitad: <b>2n → n</b><br>• Sirve para: formar <b>gametos</b> (reproducción sexual)</small></div>
+    </div>
+    <svg viewBox="0 0 700 170" width="100%" style="max-width:700px;display:block;margin:16px auto 0">
+      <text x="150" y="16" text-anchor="middle" font-weight="800" fill="#2563eb">Mitosis</text>
+      <circle cx="60" cy="90" r="34" fill="#e3ecfe" stroke="#2563eb" stroke-width="3"/><text x="60" y="95" text-anchor="middle" font-size="13" font-weight="700">2n</text>
+      <path d="M100 90 L160 60 M100 90 L160 120" stroke="#2563eb" stroke-width="3"/>
+      <circle cx="200" cy="55" r="28" fill="#e3ecfe" stroke="#2563eb" stroke-width="3"/><text x="200" y="60" text-anchor="middle" font-size="12" font-weight="700">2n</text>
+      <circle cx="200" cy="125" r="28" fill="#e3ecfe" stroke="#2563eb" stroke-width="3"/><text x="200" y="130" text-anchor="middle" font-size="12" font-weight="700">2n</text>
+      <line x1="300" y1="20" x2="300" y2="160" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="6"/>
+      <text x="510" y="16" text-anchor="middle" font-weight="800" fill="#e11d74">Meiosis</text>
+      <circle cx="370" cy="90" r="34" fill="#fde7f1" stroke="#e11d74" stroke-width="3"/><text x="370" y="95" text-anchor="middle" font-size="13" font-weight="700">2n</text>
+      <path d="M408 90 L450 60 M408 90 L450 120" stroke="#e11d74" stroke-width="3"/>
+      <circle cx="475" cy="55" r="22" fill="#fde7f1" stroke="#e11d74" stroke-width="3"/><text x="475" y="60" text-anchor="middle" font-size="11" font-weight="700">n</text>
+      <circle cx="475" cy="125" r="22" fill="#fde7f1" stroke="#e11d74" stroke-width="3"/><text x="475" y="130" text-anchor="middle" font-size="11" font-weight="700">n</text>
+      <text x="440" y="165" font-size="11" fill="#6b7280">Meiosis I</text>
+      <path d="M498 55 L555 35 M498 55 L555 75 M498 125 L555 105 M498 125 L555 145" stroke="#e11d74" stroke-width="3"/>
+      <g font-size="10" font-weight="700" text-anchor="middle">
+      <circle cx="575" cy="33" r="16" fill="#fff" stroke="#e11d74" stroke-width="3"/><text x="575" y="37">n</text>
+      <circle cx="575" cy="77" r="16" fill="#fff" stroke="#e11d74" stroke-width="3"/><text x="575" y="81">n</text>
+      <circle cx="575" cy="105" r="16" fill="#fff" stroke="#e11d74" stroke-width="3"/><text x="575" y="109">n</text>
+      <circle cx="575" cy="147" r="16" fill="#fff" stroke="#e11d74" stroke-width="3"/><text x="575" y="151">n</text></g>
+      <text x="620" y="95" font-size="12" fill="#6b7280">4 gametos</text><text x="530" y="165" font-size="11" fill="#6b7280">Meiosis II</text>
+    </svg>
+    <div class="key">🎲 <b>¿Por qué los hermanos no son iguales?</b> En la meiosis los cromosomas de a pares intercambian pedacitos (<b>entrecruzamiento o crossing-over</b>) y se reparten al azar. Así cada gameto es único → <b>variabilidad genética</b>. ¡Esto será clave para la selección natural!</div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Ejemplos resueltos</span> Razonamos juntos</div>
+    <div class="solved"><div class="q">📌 Ejemplo 1: Te raspaste la rodilla jugando al fútbol. A la semana la herida cerró. ¿Qué tipo de división celular ocurrió? ¿Por qué no fue la otra?</div>
+      <ol><li>Necesito células de piel <b>nuevas e iguales</b> a las que ya tenía, para reparar.</li><li>La división que produce células iguales a la madre es la <b>mitosis</b>.</li><li>La meiosis no sirve porque produce gametos con la mitad de cromosomas y distintos entre sí: no reparan tejidos.</li><li><b>Respuesta:</b> mitosis.</li></ol></div>
+    <div class="solved"><div class="q">📌 Ejemplo 2: Una célula de una planta tiene 2n = 24 cromosomas. ¿Cuántas células y con cuántos cromosomas se obtienen por mitosis? ¿Y por meiosis?</div>
+      <ol><li><b>Mitosis:</b> 1 división → 2 células con el mismo número → <b>2 células de 24</b>.</li><li><b>Meiosis:</b> 2 divisiones → 4 células con la mitad → 24 ÷ 2 = <b>4 células de 12</b>.</li><li>Verifico: si dos gametos de 12 se unen → 12 + 12 = 24 ✔️ (se recupera el número de la especie).</li></ol></div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Tarjetas</span> Tocá para dar vuelta</div>
+    <div class="grid g4">
+      <div class="flip"><div class="in"><div class="f">Cromosoma</div><div class="b">Estructura formada por ADN muy enrollado. Lleva la información hereditaria.</div></div></div>
+      <div class="flip"><div class="in"><div class="f">Diploide (2n)</div><div class="b">Célula con pares de cromosomas. Ej: células del cuerpo humano (46).</div></div></div>
+      <div class="flip"><div class="in"><div class="f">Haploide (n)</div><div class="b">Célula con un solo juego de cromosomas. Ej: gametos humanos (23).</div></div></div>
+      <div class="flip"><div class="in"><div class="f">Citocinesis</div><div class="b">División del citoplasma al final de la mitosis: la célula se “estrangula” y quedan dos.</div></div></div>
+    </div>
+  </div>
+
+  <div class="card"><div class="step-title"><span>¿Entendiste?</span> Chequeo rápido</div><div class="qc-wrap" data-set="div"></div></div>
+</section>
+
+<!-- ======================= SELECCIÓN NATURAL ======================= -->
+<section class="tab t-sel" id="sel">
+  <div class="card hero"><div class="ico">🦋</div><div><h2>3. Selección natural</h2><p>¿Por qué algunos individuos sobreviven y dejan más descendencia que otros?</p></div></div>
+
+  <div class="card">
+    <div class="step-title"><span>Introducción</span> La gran idea de Darwin</div>
+    <p><b>Charles Darwin</b> (y al mismo tiempo <b>Alfred Wallace</b>) propuso en 1859, en el libro <i>El origen de las especies</i>, que la naturaleza “elige” a los individuos mejor adaptados a su ambiente. ¡Darwin pasó por la Argentina en su viaje en el barco <b>Beagle</b> y encontró fósiles de animales gigantes como el <b>megaterio</b> cerca de Bahía Blanca!</p>
+    <div class="analogy"><b>⚽ Analogía:</b> En una prueba para entrar a un equipo, el entrenador no “crea” buenos jugadores: <b>elige</b> entre los que ya hay. La selección natural funciona igual: no inventa características, sino que el ambiente “favorece” a quienes <b>ya tenían</b> la característica útil.</div>
+    <h3>Los 4 ingredientes de la selección natural</h3>
+    <div class="grid g4">
+      <div class="mini"><div class="e">🎨</div><b>1. Variación</b><small>Los individuos de una población son distintos entre sí.</small></div>
+      <div class="mini"><div class="e">🧬</div><b>2. Herencia</b><small>Esas diferencias se pasan de padres a hijos.</small></div>
+      <div class="mini"><div class="e">🐣🐣🐣</div><b>3. Sobreproducción</b><small>Nacen más individuos de los que pueden sobrevivir → lucha por los recursos.</small></div>
+      <div class="mini"><div class="e">🏆</div><b>4. Supervivencia diferencial</b><small>Los mejor adaptados sobreviven y <b>se reproducen más</b>.</small></div>
+    </div>
+    <div class="key">🔑 <b>Resultado:</b> con el paso de muchas generaciones, la característica ventajosa se vuelve <b>más frecuente</b> en la población. La población <b>se adapta</b>.</div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Simulador</span> Las polillas de Inglaterra (Biston betularia)</div>
+    <p>En el siglo XIX, el humo de las fábricas ennegreció los troncos de los árboles. Los pájaros comen las polillas que <b>ven</b> con facilidad. Probá vos: elegí el ambiente y avanzá generaciones.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+      <button class="btn ghost" id="envClean">🌳 Bosque limpio (troncos claros)</button>
+      <button class="btn ghost" id="envDirty">🏭 Bosque contaminado (troncos oscuros)</button>
+      <button class="btn" id="genBtn">🐦 Pasar 1 generación</button>
+      <button class="btn ghost" id="resetSim">↺ Reiniciar</button>
+    </div>
+    <div class="forest clean" id="forest"></div>
+    <p id="simMsg" style="font-weight:600"></p>
+    <div class="chart" id="simChart"></div>
+    <div class="legend"><span><i style="background:#f1ead8;border:1px solid #999"></i>Polillas claras</span><span><i style="background:#2d2b28"></i>Polillas oscuras</span></div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Ejemplos resueltos</span> Razonamos juntos</div>
+    <div class="solved"><div class="q">📌 Ejemplo 1: Bacterias resistentes a antibióticos. Una persona deja de tomar el antibiótico antes de tiempo. ¿Por qué eso puede ser peligroso?</div>
+      <ol><li><b>Variación:</b> entre millones de bacterias, por azar, algunas ya son un poco más resistentes.</li><li><b>Presión del ambiente:</b> el antibiótico mata primero a las más débiles.</li><li>Si se corta el tratamiento, sobreviven las <b>más resistentes</b> y se reproducen (por bipartición, ¡muy rápido!).</li><li><b>Resultado:</b> la nueva población es casi toda resistente → el antibiótico deja de funcionar. Por eso hay que cumplir el tratamiento completo.</li></ol></div>
+    <div class="solved"><div class="q">📌 Ejemplo 2: Un estudiante dice: “Las liebres del Ártico se volvieron blancas porque <i>quisieron</i> camuflarse en la nieve”. ¿Está bien?</div>
+      <ol><li>Detecto el error: los seres vivos <b>no cambian por voluntad ni por necesidad</b>.</li><li>Explicación correcta: en la población original había liebres de distintos colores (<b>variación</b>).</li><li>Los zorros cazaban más fácilmente a las oscuras sobre la nieve; las claras sobrevivían y tenían más crías (<b>supervivencia diferencial</b>).</li><li>El color claro se <b>heredaba</b> → con generaciones, casi todas fueron blancas.</li></ol></div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Tarjetas</span> Tocá para dar vuelta</div>
+    <div class="grid g4">
+      <div class="flip"><div class="in"><div class="f">Adaptación</div><div class="b">Característica heredable que aumenta la supervivencia y reproducción en un ambiente.</div></div></div>
+      <div class="flip"><div class="in"><div class="f">Población</div><div class="b">Grupo de individuos de la misma especie que viven en un mismo lugar al mismo tiempo.</div></div></div>
+      <div class="flip"><div class="in"><div class="f">Mutación</div><div class="b">Cambio al azar en el ADN. Es la fuente original de la variación.</div></div></div>
+      <div class="flip"><div class="in"><div class="f">Selección artificial</div><div class="b">Cuando el ser humano elige qué individuos se reproducen. Ej: razas de perros, vacas lecheras.</div></div></div>
+    </div>
+  </div>
+
+  <div class="card"><div class="step-title"><span>¿Entendiste?</span> Chequeo rápido</div><div class="qc-wrap" data-set="sel"></div></div>
+</section>
+
+<!-- ======================= EVOLUCIÓN ======================= -->
+<section class="tab t-evo" id="evo">
+  <div class="card hero"><div class="ico">🦴</div><div><h2>4. Evolución</h2><p>Las especies cambian a lo largo del tiempo y todas están emparentadas.</p></div></div>
+
+  <div class="card">
+    <div class="step-title"><span>Introducción</span> ¿Qué es la evolución?</div>
+    <p>La <b>evolución biológica</b> es el proceso de <b>cambio de las especies a lo largo de muchísimas generaciones</b>. A partir de ancestros comunes se originaron todas las especies que existen y existieron. La <b>selección natural</b> es uno de los principales mecanismos que la explica.</p>
+    <div class="analogy"><b>🗣️ Analogía:</b> Pensá en el idioma: el castellano, el italiano y el portugués se parecen porque “descienden” del latín. Con siglos de cambios pequeños se volvieron idiomas distintos. Las especies también: el ser humano y el chimpancé se parecen porque comparten un <b>ancestro común</b> (¡no descendemos del chimpancé!).</div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Historia</span> Línea de tiempo de las ideas</div>
+    <div class="timeline">
+      <div class="ev"><b>Antigüedad – s. XVIII · Fijismo / Creacionismo:</b> las especies fueron creadas tal como son y no cambian.</div>
+      <div class="ev"><b>1809 · Jean-Baptiste Lamarck:</b> primera teoría evolutiva. Proponía el <b>uso y desuso</b> de los órganos y la <b>herencia de los caracteres adquiridos</b>. Hoy sabemos que esto último es incorrecto.</div>
+      <div class="ev"><b>1831–1836 · Viaje del Beagle:</b> Darwin recorre Sudamérica (¡incluida la Patagonia!) y las islas Galápagos.</div>
+      <div class="ev"><b>1859 · Darwin y Wallace:</b> evolución por <b>selección natural</b>.</div>
+      <div class="ev"><b>Siglo XX · Teoría sintética (neodarwinismo):</b> une las ideas de Darwin con la genética de Mendel: la variación proviene de <b>mutaciones</b> y de la <b>reproducción sexual</b>.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Comparación</span> Las jirafas según Lamarck y según Darwin</div>
+    <div class="vs">
+      <div class="mini" style="text-align:left;border-color:#fca5a5"><div class="e">🦒❌</div><b style="color:#dc2626">Lamarck</b><small>1. Las jirafas antiguas tenían cuello corto.<br>2. Estiraban el cuello para alcanzar hojas altas (<b>uso</b>).<br>3. El cuello se alargaba un poco durante su vida.<br>4. Pasaban ese cuello “estirado” a sus hijos (<b>herencia de lo adquirido</b>).</small></div>
+      <div class="mid">VS</div>
+      <div class="mini" style="text-align:left;border-color:#86efac"><div class="e">🦒✅</div><b style="color:#16a34a">Darwin</b><small>1. Había jirafas con cuellos de distinto largo (<b>variación</b>).<br>2. Cuando escaseaba el alimento, las de cuello largo comían mejor.<br>3. Sobrevivían más y tenían más crías (<b>selección natural</b>).<br>4. Los hijos heredaban el cuello largo → generación tras generación, cuellos más largos.</small></div>
+    </div>
+    <div class="key">🔑 Si te pasás el año haciendo pesas, tus músculos crecen, pero tus hijos <b>no</b> nacen musculosos. ¡Por eso la idea de Lamarck no funciona!</div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Pruebas</span> Evidencias de la evolución (tocá cada una)</div>
+    <div class="grid g3" id="evid"></div>
+    <div id="evidBox" class="analogy" style="display:none"></div>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Diagrama</span> Árbol filogenético (simplificado)</div>
+    <p>Un <b>árbol filogenético</b> muestra el parentesco entre especies. Cada ramificación es un <b>ancestro común</b>. Cuanto más cerca se unen dos ramas, más emparentadas están.</p>
+    <svg viewBox="0 0 640 260" width="100%" style="max-width:640px;display:block;margin:auto">
+      <g stroke="#d97706" stroke-width="4" fill="none" stroke-linecap="round">
+        <path d="M40 230 L120 150"/><path d="M120 150 L60 40"/>
+        <path d="M120 150 L220 110"/><path d="M220 110 L180 40"/>
+        <path d="M220 110 L320 90"/><path d="M320 90 L300 40"/>
+        <path d="M320 90 L430 70"/><path d="M430 70 L420 40"/>
+        <path d="M430 70 L520 55"/><path d="M520 55 L510 40"/><path d="M520 55 L590 40"/>
+      </g>
+      <g fill="#fff" stroke="#d97706" stroke-width="3"><circle cx="120" cy="150" r="7"/><circle cx="220" cy="110" r="7"/><circle cx="320" cy="90" r="7"/><circle cx="430" cy="70" r="7"/><circle cx="520" cy="55" r="7"/></g>
+      <g font-size="26" text-anchor="middle"><text x="60" y="30">🐟</text><text x="180" y="30">🐸</text><text x="300" y="30">🦎</text><text x="420" y="30">🐦</text><text x="510" y="30">🐒</text><text x="590" y="30">🧍</text></g>
+      <g font-size="12" text-anchor="middle" fill="#374151"><text x="60" y="56">Peces</text><text x="180" y="56">Anfibios</text><text x="300" y="56">Reptiles</text><text x="420" y="56">Aves</text><text x="505" y="56" dx="-6">Chimp.</text><text x="595" y="56">Humano</text></g>
+      <text x="40" y="250" font-size="12" fill="#6b7280">Ancestro común de los vertebrados</text>
+      <text x="530" y="80" font-size="11" fill="#d97706">ancestro común</text><text x="530" y="93" font-size="11" fill="#d97706">humano–chimpancé</text>
+      <path d="M620 240 L620 110" stroke="#9ca3af" stroke-width="2" marker-end="url(#ar1)"/><text x="612" y="250" font-size="11" fill="#6b7280" text-anchor="end">tiempo →</text>
+    </svg>
+    <p class="hint">Reptiles y aves están más emparentados entre sí que con los peces. (Simplificado con fines didácticos.)</p>
+  </div>
+
+  <div class="card">
+    <div class="step-title"><span>Ejemplos resueltos</span> Razonamos juntos</div>
+    <div class="solved"><div class="q">📌 Ejemplo 1: El brazo humano, el ala del murciélago y la aleta de la ballena tienen los mismos huesos (húmero, radio, cúbito…), aunque sirven para cosas distintas. ¿Qué evidencia de la evolución es?</div>
+      <ol><li>Tienen <b>la misma estructura interna</b> pero <b>distinta función</b> → son <b>órganos homólogos</b>.</li><li>Si tienen el mismo “plan” de huesos es porque lo heredaron de un <b>ancestro común</b>.</li><li>Cada especie lo fue modificando según su ambiente (volar, nadar, agarrar).</li><li><b>Respuesta:</b> evidencia de <b>anatomía comparada</b> (órganos homólogos).</li></ol></div>
+    <div class="solved"><div class="q">📌 Ejemplo 2: Las alas de una mariposa y las de un pájaro sirven para volar. ¿Son homólogas?</div>
+      <ol><li>Comparo estructura: las alas del pájaro tienen <b>huesos</b>; las de la mariposa son <b>membranas</b> sin huesos.</li><li>Misma función, distinto origen → son <b>órganos análogos</b>.</li><li><b>Conclusión:</b> no indican parentesco cercano; muestran que ambientes parecidos favorecen soluciones parecidas (evolución convergente).</li></ol></div>
+  </div>
+
+  <div class="card"><div class="step-title"><span>¿Entendiste?</span> Chequeo rápido</div><div class="qc-wrap" data-set="evo"></div></div>
+</section>
+
+<!-- ======================= PRÁCTICA ======================= -->
+<section class="tab t-pur" id="pra">
+  <div class="card hero"><div class="ico">✏️</div><div><h2>Ejercicios de práctica graduada</h2><p>Resolvé en la hoja o en el cuadro, y después abrí la respuesta para autoevaluarte.</p></div></div>
+  <div id="practice"></div>
+</section>
+
+<!-- ======================= EXAMEN ======================= -->
+<section class="tab t-pur" id="exa">
+  <div class="card hero"><div class="ico">📝</div><div><h2>Examen integrador</h2><p>20 preguntas · 4 temas · Nota del 1 al 10 · Se aprueba con 6. ¡Leé con atención cada consigna!</p></div></div>
+  <div class="card" id="exStart" style="text-align:center">
+    <p>📋 <b>Instrucciones:</b> elegí una sola opción por pregunta. Al terminar, tocá <b>“Corregir examen”</b> para ver tu nota, las respuestas correctas y un análisis por tema.</p>
+    <label style="display:inline-flex;gap:6px;align-items:center;margin:6px 0 14px"><input type="checkbox" id="shuffleChk" checked> Mezclar el orden de las preguntas</label><br>
+    <button class="btn" id="startEx">▶ Comenzar examen</button>
+  </div>
+  <div id="exWrap" style="display:none">
+    <div class="sticky-exam"><span>⏱️ Tiempo: <span class="timer" id="timer">00:00</span></span><span>Respondidas: <b id="answered">0</b>/20</span><button class="btn" id="submitEx">✅ Corregir examen</button></div>
+    <div id="exQs"></div>
+  </div>
+  <div class="card result" id="exRes" style="display:none"></div>
+</section>
+
+<!-- ======================= TIPS ======================= -->
+<section class="tab t-pur" id="tip">
+  <div class="card hero"><div class="ico">💡</div><div><h2>Tips de estudio para 1er año</h2><p>El secundario pide más autonomía. ¡Estas estrategias te van a ayudar!</p></div></div>
+  <div class="grid g3">
+    <div class="card tipcard"><div class="e">🗓️</div><h3>Organizá la semana</h3><p>Usá una agenda o calendario. Anotá fechas de pruebas y entregas apenas te las dicen. Estudiá un poco cada día en vez de todo la noche anterior.</p></div>
+    <div class="card tipcard"><div class="e">🍅</div><h3>Técnica Pomodoro</h3><p>25 minutos de estudio concentrado (celular lejos) + 5 de descanso. Cada 4 rondas, descanso largo de 15–20 minutos.</p></div>
+    <div class="card tipcard"><div class="e">🗺️</div><h3>Mapas conceptuales</h3><p>Biología tiene muchos conceptos conectados. Dibujá un mapa: Reproducción → Meiosis → Variabilidad → Selección natural → Evolución.</p></div>
+    <div class="card tipcard"><div class="e">🗣️</div><h3>Explicalo en voz alta</h3><p>Si podés explicarle la mitosis a alguien de tu familia sin mirar, lo entendiste. Si te trabás, ahí está lo que tenés que repasar.</p></div>
+    <div class="card tipcard"><div class="e">🃏</div><h3>Tarjetas de memoria</h3><p>Concepto de un lado, definición del otro. Repasalas en el colectivo o en ratos libres. Separá las que no sabés y repetilas más.</p></div>
+    <div class="card tipcard"><div class="e">🎨</div><h3>Dibujá los procesos</h3><p>Dibujar las fases de la mitosis o el ciclo de la selección natural ayuda a recordarlos mucho mejor que solo leer.</p></div>
+    <div class="card tipcard"><div class="e">❓</div><h3>Preguntá sin miedo</h3><p>Anotá tus dudas al estudiar y llevalas a clase. ¡Preguntar es de buenos alumnos, no de los que no saben!</p></div>
+    <div class="card tipcard"><div class="e">😴</div><h3>Dormí bien</h3><p>Mientras dormís, el cerebro guarda lo que estudiaste. Antes de una prueba, dormir es mejor que quedarse estudiando hasta tarde.</p></div>
+    <div class="card tipcard"><div class="e">🔁</div><h3>Practicá con exámenes</h3><p>Hacé el examen de esta guía varias veces (las preguntas se mezclan). Revisá las explicaciones de las que te equivocaste.</p></div>
+  </div>
+  <div class="card" style="text-align:center"><h3 style="color:var(--c5)">🧩 El gran resumen en una frase</h3>
+    <p style="font-size:1.1rem">La <b>reproducción sexual</b> y la <b>meiosis</b> generan <b>variación</b> → la <b>selección natural</b> favorece a los mejor adaptados → a lo largo de muchas generaciones, las especies <b>evolucionan</b>.<br>Y la <b>mitosis</b> permite que cada ser vivo crezca y repare su cuerpo.</p></div>
+</section>
+
+</main>
+<footer>Guía de apoyo escolar · Biología 1er Año · Colegio Santa Ana · Buenos Aires</footer>
+
+<script>
+/* ---------- NAV ---------- */
+const visited=new Set(['rep']);
+function updProg(){const n=visited.size;document.getElementById('progTxt').textContent=n+' de 7 secciones visitadas';document.getElementById('progBar').style.width=(n/7*100)+'%';}
+document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  document.querySelectorAll('section.tab').forEach(s=>s.classList.remove('show'));document.getElementById(b.dataset.t).classList.add('show');
+  visited.add(b.dataset.t);updProg();window.scrollTo({top:0,behavior:'smooth'});
+});
+updProg();
+document.querySelectorAll('.flip').forEach(f=>f.onclick=()=>f.classList.toggle('on'));
+
+/* ---------- QUICK CHECKS ---------- */
+const QC={
+ rep:[{q:'La reproducción asexual produce hijos…',o:['Distintos entre sí','Idénticos al progenitor','Con la mitad de cromosomas'],a:1,e:'Hay un solo progenitor y no hay mezcla de información: se forman clones.'},
+      {q:'¿Cuántos cromosomas tiene un óvulo humano?',o:['46','23','92'],a:1,e:'Los gametos son haploides: la mitad de 46.'},
+      {q:'La levadura forma un brote que se separa. Eso es…',o:['Gemación','Bipartición','Fragmentación'],a:0,e:'La gemación consiste en formar una “yema” o brote.'}],
+ div:[{q:'¿En qué etapa se duplica el ADN?',o:['Anafase','Interfase','Telofase'],a:1,e:'El ADN se copia en la interfase, antes de dividirse.'},
+      {q:'¿En qué fase los cromosomas se alinean en el centro?',o:['Profase','Metafase','Anafase'],a:1,e:'Metafase: “meta” = en el medio, alineados en el ecuador.'},
+      {q:'La meiosis produce…',o:['2 células iguales','4 células haploides','4 células diploides'],a:1,e:'Dos divisiones → 4 células con la mitad de cromosomas.'}],
+ sel:[{q:'Según Darwin, ¿qué tiene que existir primero en una población?',o:['Voluntad de cambiar','Variación entre individuos','Un ambiente fijo'],a:1,e:'Sin variación no hay nada para “seleccionar”.'},
+      {q:'En un bosque contaminado, ¿qué polillas sobreviven más?',o:['Claras','Oscuras','Igual ambas'],a:1,e:'Las oscuras se camuflan sobre troncos negros y los pájaros no las ven.'},
+      {q:'La selección natural actúa sobre…',o:['Individuos, pero la que cambia es la población','Un solo individuo que cambia','Solo sobre plantas'],a:0,e:'Un individuo no evoluciona: la población cambia sus frecuencias con las generaciones.'}],
+ evo:[{q:'Brazo humano y aleta de ballena son órganos…',o:['Análogos','Homólogos','Vestigiales'],a:1,e:'Misma estructura, distinta función: homólogos.'},
+      {q:'“Los caracteres adquiridos se heredan” es una idea de…',o:['Darwin','Lamarck','Mendel'],a:1,e:'Lamarck. Hoy se sabe que es incorrecta.'},
+      {q:'Los fósiles son evidencia…',o:['Paleontológica','Embriológica','Molecular'],a:0,e:'La paleontología estudia los fósiles.'}]
+};
+document.querySelectorAll('.qc-wrap').forEach(w=>{
+  QC[w.dataset.set].forEach(it=>{
+    const d=document.createElement('div');d.className='qc';d.innerHTML='<b>'+it.q+'</b><div class="opts"></div><div class="fb"></div>';
+    it.o.forEach((op,i)=>{const b=document.createElement('button');b.textContent=op;b.onclick=()=>{
+      d.querySelectorAll('button').forEach(x=>x.classList.remove('ok','no'));
+      if(i===it.a){b.classList.add('ok');d.querySelector('.fb').innerHTML='✅ ¡Bien! '+it.e;}
+      else{b.classList.add('no');d.querySelector('.fb').innerHTML='❌ Probá de nuevo. Pista: '+it.e.split(':')[0].split('.')[0]+'…';}
+    };d.querySelector('.opts').appendChild(b);});
+    w.appendChild(d);
+  });
+});
+
+/* ---------- MITOSIS ---------- */
+const C1='#2563eb',C2='#e11d74';
+function chromX(x,y,c,rot=0,s=1){return `<g transform="translate(${x},${y}) rotate(${rot}) scale(${s})"><path d="M-6,-12 Q0,0 -6,12" stroke="${c}" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M6,-12 Q0,0 6,12" stroke="${c}" stroke-width="5" fill="none" stroke-linecap="round"/><circle r="2.5" fill="#111"/></g>`}
+function chromV(x,y,c,dir){return `<g transform="translate(${x},${y})"><path d="M-7,${dir*10} L0,0 L7,${dir*10}" stroke="${c}" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle r="2.5" fill="#111"/></g>`}
+function spindle(x1,x2){let s='';[60,80,100,120,140].forEach(y=>{s+=`<path d="M${x1},110 Q150,${y} ${x2},110" stroke="#94a3b8" stroke-width="1.2" fill="none"/>`});return s+`<circle cx="${x1}" cy="110" r="5" fill="#f59e0b"/><circle cx="${x2}" cy="110" r="5" fill="#f59e0b"/>`}
+const PH=[
+ {n:'Interfase',d:'La célula crece y duplica su ADN. Los cromosomas todavía no se ven: el ADN está suelto y desordenado como un ovillo de lana (cromatina) dentro del núcleo.',t:'📚 “Fotocopia” del ADN',
+  s:()=>`<ellipse cx="150" cy="110" rx="125" ry="90" fill="#eef4ff" stroke="${C1}" stroke-width="3"/><circle cx="150" cy="110" r="45" fill="#dbe7ff" stroke="#64748b" stroke-width="2"/><path d="M125 100 q10 -20 20 0 t20 0 t15 10 M120 120 q15 10 25 -5 t25 5 M135 85 q10 10 25 0" stroke="${C2}" stroke-width="2" fill="none"/><path d="M130 130 q10 -15 25 0 t20 -5" stroke="${C1}" stroke-width="2" fill="none"/><circle cx="160" cy="110" r="8" fill="#a5b4fc"/>`},
+ {n:'Profase',d:'El ADN se enrolla y se condensa: aparecen los cromosomas en forma de “X” (cada uno con dos copias unidas por el centro). La membrana del núcleo empieza a desaparecer y se forma el huso.',t:'🧶 El ovillo se ordena en “X”',
+  s:()=>`<ellipse cx="150" cy="110" rx="125" ry="90" fill="#eef4ff" stroke="${C1}" stroke-width="3"/><circle cx="150" cy="110" r="52" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 6"/>${chromX(125,90,C1,20)}${chromX(170,95,C2,-30)}${chromX(135,135,C2,60)}${chromX(175,130,C1,-10)}<circle cx="70" cy="110" r="5" fill="#f59e0b"/><circle cx="230" cy="110" r="5" fill="#f59e0b"/>`},
+ {n:'Metafase',d:'Los cromosomas se alinean en el centro de la célula (placa ecuatorial). Las fibras del huso se enganchan al centro de cada cromosoma.',t:'↔️ META = en el MEDIO',
+  s:()=>`<ellipse cx="150" cy="110" rx="125" ry="90" fill="#eef4ff" stroke="${C1}" stroke-width="3"/>${spindle(45,255)}<line x1="150" y1="40" x2="150" y2="180" stroke="#cbd5e1" stroke-dasharray="4"/>${chromX(150,65,C1,90,.9)}${chromX(150,95,C2,90,.9)}${chromX(150,125,C1,90,.9)}${chromX(150,155,C2,90,.9)}`},
+ {n:'Anafase',d:'Las fibras del huso tiran y separan las dos copias de cada cromosoma hacia los polos opuestos. Cada lado recibe un juego completo.',t:'🪢 ANA = se sepAran',
+  s:()=>`<ellipse cx="150" cy="110" rx="130" ry="85" fill="#eef4ff" stroke="${C1}" stroke-width="3"/>${spindle(35,265)}${[65,95,125,155].map((y,i)=>chromV(95,y,i%2?C2:C1,0)?`<g transform="translate(95,${y}) rotate(90)"><path d="M-7,10 L0,0 L7,10" stroke="${i%2?C2:C1}" stroke-width="5" fill="none" stroke-linecap="round"/></g><g transform="translate(205,${y}) rotate(-90)"><path d="M-7,10 L0,0 L7,10" stroke="${i%2?C2:C1}" stroke-width="5" fill="none" stroke-linecap="round"/></g>`:'').join('')}`},
+ {n:'Telofase',d:'Los cromosomas llegan a los polos y se vuelven a desenrollar. Se forman dos núcleos nuevos. La célula empieza a estrangularse por el medio.',t:'🏁 TELO = final',
+  s:()=>`<path d="M150 25 C 40 20, 20 200, 150 195 C 280 200, 260 20, 150 25 Z" fill="#eef4ff" stroke="${C1}" stroke-width="3"/><path d="M150 25 Q135 110 150 195" stroke="${C1}" stroke-width="3" fill="none"/><path d="M150 25 Q165 110 150 195" stroke="${C1}" stroke-width="3" fill="none"/><circle cx="85" cy="110" r="35" fill="#dbe7ff" stroke="#64748b" stroke-width="2"/><circle cx="215" cy="110" r="35" fill="#dbe7ff" stroke="#64748b" stroke-width="2"/><path d="M70 105 q10 -15 20 0 t15 5 M75 120 q10 8 22 -3" stroke="${C2}" stroke-width="2" fill="none"/><path d="M200 105 q10 -15 20 0 t15 5 M205 120 q10 8 22 -3" stroke="${C2}" stroke-width="2" fill="none"/>`},
+ {n:'Citocinesis',d:'Se divide el citoplasma y quedan dos células hijas, cada una con su núcleo y la misma información genética que la célula madre. ¡Listas para empezar su propio ciclo!',t:'✂️ 1 célula → 2 células iguales',
+  s:()=>`<ellipse cx="80" cy="110" rx="68" ry="72" fill="#eef4ff" stroke="${C1}" stroke-width="3"/><ellipse cx="220" cy="110" rx="68" ry="72" fill="#eef4ff" stroke="${C1}" stroke-width="3"/><circle cx="80" cy="110" r="30" fill="#dbe7ff" stroke="#64748b" stroke-width="2"/><circle cx="220" cy="110" r="30" fill="#dbe7ff" stroke="#64748b" stroke-width="2"/><path d="M65 105 q10 -15 20 0 t12 5 M68 118 q10 8 20 -3" stroke="${C2}" stroke-width="2" fill="none"/><path d="M205 105 q10 -15 20 0 t12 5 M208 118 q10 8 20 -3" stroke="${C2}" stroke-width="2" fill="none"/><text x="80" y="205" text-anchor="middle" font-size="12" font-weight="700">2n</text><text x="220" y="205" text-anchor="middle" font-size="12" font-weight="700">2n</text>`}
+];
+let ph=0;const ms=document.getElementById('mitStep');
+PH.forEach((p,i)=>{const b=document.createElement('button');b.textContent=(i+1)+'. '+p.n;b.onclick=()=>showPh(i);ms.appendChild(b)});
+function showPh(i){ph=i;const p=PH[i];document.getElementById('mitSvg').innerHTML=p.s();document.getElementById('mitT').textContent=p.n;document.getElementById('mitD').textContent=p.d;document.getElementById('mitTip').textContent=p.t;
+  [...ms.children].forEach((b,j)=>b.classList.toggle('on',j===i));document.getElementById('mitPrev').disabled=i===0;document.getElementById('mitNext').disabled=i===PH.length-1;}
+document.getElementById('mitPrev').onclick=()=>showPh(Math.max(0,ph-1));document.getElementById('mitNext').onclick=()=>showPh(Math.min(PH.length-1,ph+1));
+showPh(0);
+
+/* ---------- SIMULADOR POLILLAS ---------- */
+const forest=document.getElementById('forest');let env='clean',moths=[],hist=[],gen=0;const N=40;
+function mothSvg(dark){const c=dark?'#2d2b28':'#f1ead8',s=dark?'#000':'#b8ad92';return `<svg viewBox="0 0 26 16" width="26" height="16"><path d="M13 8 L1 1 L3 13 Z" fill="${c}" stroke="${s}" stroke-width=".8"/><path d="M13 8 L25 1 L23 13 Z" fill="${c}" stroke="${s}" stroke-width=".8"/><ellipse cx="13" cy="8" rx="1.6" ry="5" fill="${dark?'#111':'#7a6f58'}"/></svg>`}
+function initSim(){moths=[];for(let i=0;i<N;i++)moths.push({dark:i<4});gen=0;hist=[];record();render();msg('Generación 0: la mayoría de las polillas son claras (solo unas pocas oscuras por mutación).');}
+function render(){forest.innerHTML='';moths.forEach(m=>{const d=document.createElement('div');d.className='moth';d.style.left=(Math.random()*92+2)+'%';d.style.top=(Math.random()*85+4)+'%';d.style.transform=`rotate(${Math.random()*40-20}deg)`;d.innerHTML=mothSvg(m.dark);m.el=d;forest.appendChild(d)});}
+function record(){const dk=moths.filter(m=>m.dark).length;hist.push({dk,lt:N-dk});drawChart();}
+function drawChart(){const ch=document.getElementById('simChart');ch.innerHTML='';hist.forEach((h,i)=>{const w=document.createElement('div');w.style.textAlign='center';w.innerHTML=`<div class="col"><div style="height:${h.lt/N*100}%;background:#e7dfc8;border:1px solid #b8ad92"></div><div style="height:${h.dk/N*100}%;background:#2d2b28"></div></div><div class="lab">G${i}</div>`;w.style.height='100%';w.style.display='flex';w.style.flexDirection='column';w.firstChild.style.flex='1';ch.appendChild(w)});}
+function msg(t){document.getElementById('simMsg').textContent=t}
+function setEnv(e){env=e;forest.className='forest '+e;msg(e==='clean'?'🌳 Ambiente: troncos claros con líquenes. ¿Qué polillas ven más fácil los pájaros?':'🏭 Ambiente: troncos oscurecidos por el hollín de las fábricas. ¿Qué pasará ahora?');}
+document.getElementById('envClean').onclick=()=>setEnv('clean');document.getElementById('envDirty').onclick=()=>setEnv('dirty');
+document.getElementById('resetSim').onclick=()=>{setEnv('clean');initSim()};
+document.getElementById('genBtn').onclick=()=>{
+  const btn=document.getElementById('genBtn');btn.disabled=true;
+  let eaten=0;
+  moths.forEach(m=>{const visible=(env==='clean'&&m.dark)||(env==='dirty'&&!m.dark);const p=visible?0.6:0.12;if(Math.random()<p){m.dead=true;eaten++;m.el.classList.add('dead')}});
+  setTimeout(()=>{
+    let surv=moths.filter(m=>!m.dead);if(surv.length===0)surv=[{dark:env==='dirty'}];
+    const nw=[];for(let i=0;i<N;i++){const p=surv[Math.floor(Math.random()*surv.length)];let dark=p.dark;if(Math.random()<0.02)dark=!dark;nw.push({dark})}
+    moths=nw;gen++;record();render();const dk=moths.filter(m=>m.dark).length;
+    msg(`Generación ${gen}: los pájaros comieron ${eaten} polillas. Los sobrevivientes se reprodujeron → ahora hay ${dk} oscuras y ${N-dk} claras.`);btn.disabled=false;
+  },900);
+};
+initSim();
+
+/* ---------- EVIDENCIAS ---------- */
+const EV=[
+ ['🦴','Paleontológicas','Los <b>fósiles</b> son restos o huellas de seres vivos del pasado. Muestran especies que ya no existen y formas intermedias (como <i>Archaeopteryx</i>, entre reptiles y aves). En Argentina hay fósiles famosos: el megaterio, el gliptodonte y dinosaurios como el <i>Argentinosaurus</i>.'],
+ ['🦾','Anatómicas','<b>Órganos homólogos:</b> misma estructura, distinta función (brazo, ala de murciélago, aleta) → ancestro común.<br><b>Órganos análogos:</b> distinta estructura, misma función (ala de mariposa y de pájaro).<br><b>Órganos vestigiales:</b> restos sin función clara, como el coxis humano o las muelas de juicio.'],
+ ['🐣','Embriológicas','Los embriones de peces, aves, reptiles y mamíferos se parecen mucho en sus primeras etapas (todos tienen hendiduras en el cuello y cola). Esto sugiere un origen común.'],
+ ['🧬','Moleculares','Comparando el <b>ADN</b> de distintas especies: cuanto más parecido, más emparentadas. Humanos y chimpancés compartimos alrededor del 98–99% del ADN.'],
+ ['🏝️','Biogeográficas','La distribución de las especies en el planeta. Darwin vio en las Galápagos pinzones con picos distintos en cada isla, emparentados con aves del continente: se fueron adaptando a la comida de cada isla.'],
+ ['🧪','Observación directa','Hoy podemos <b>ver</b> evolución en acción: bacterias resistentes a antibióticos, insectos resistentes a insecticidas, polillas del bosque industrial.']
+];
+const evd=document.getElementById('evid'),evb=document.getElementById('evidBox');
+EV.forEach(e=>{const d=document.createElement('div');d.className='mini';d.style.cursor='pointer';d.innerHTML=`<div class="e">${e[0]}</div><b>${e[1]}</b><small>Tocá para ver</small>`;d.onclick=()=>{evb.style.display='block';evb.innerHTML=`<b>${e[0]} Evidencias ${e[1].toLowerCase()}:</b> ${e[2]}`;evd.querySelectorAll('.mini').forEach(x=>x.style.outline='');d.style.outline='3px solid var(--c4)'};evd.appendChild(d)});
+
+/* ---------- PRÁCTICA ---------- */
+const PR=[
+ {l:1,n:'Nivel inicial',q:'Completá el cuadro: indicá si cada ejemplo es reproducción <b>sexual</b> o <b>asexual</b> y nombrá el tipo cuando sea asexual.<br>a) Una bacteria se divide en dos.<br>b) Un helecho libera esporas.<br>c) Una gallina pone un huevo fecundado.<br>d) Plantás un gajo de potus en agua y echa raíces.',
+  a:'a) Asexual – bipartición. b) Asexual – esporulación. c) Sexual (fecundación interna, desarrollo ovíparo). d) Asexual – multiplicación vegetativa.<br><i>Justificación:</i> en la asexual hay un solo progenitor y no hay gametos.'},
+ {l:1,n:'Nivel inicial',q:'Ordená las fases de la mitosis y escribí una característica de cada una: <b>Anafase – Profase – Telofase – Metafase</b>.',
+  a:'Profase (los cromosomas se condensan, desaparece el núcleo) → Metafase (se alinean en el centro) → Anafase (se separan hacia los polos) → Telofase (se forman dos núcleos). Después, citocinesis.<br><i>Truco:</i> “Papá Me Armó Todo”.'},
+ {l:2,n:'Nivel intermedio',q:'Un gato tiene 38 cromosomas en sus células del cuerpo. Calculá:<br>a) ¿Cuántos cromosomas tiene cada célula hija después de una mitosis?<br>b) ¿Cuántas células y con cuántos cromosomas se forman por meiosis?<br>c) ¿Cuántos cromosomas tendrá el cigoto de un gatito?',
+  a:'a) 38 (la mitosis conserva el número). b) 4 células de 19 cromosomas (38 ÷ 2). c) 19 + 19 = 38.<br><i>Justificación:</i> la meiosis reduce a la mitad para que en la fecundación se recupere el número de la especie.'},
+ {l:2,n:'Nivel intermedio',q:'Explicá con los 4 pasos de la selección natural (variación, herencia, sobreproducción, supervivencia diferencial) por qué los cactus del desierto tienen espinas en lugar de hojas anchas.',
+  a:'1) <b>Variación:</b> en las plantas ancestrales había hojas de distinto tamaño. 2) <b>Sobreproducción:</b> nacían muchas plantas y el agua era escasa. 3) <b>Supervivencia diferencial:</b> las de hojas más pequeñas perdían menos agua por transpiración y sobrevivían más. 4) <b>Herencia:</b> pasaban esa característica a sus descendientes. Con muchísimas generaciones, las hojas quedaron transformadas en espinas (que además protegen de animales).'},
+ {l:3,n:'Desafío',q:'Leé esta frase: <i>“Los topos viven bajo tierra y, como no usan los ojos, se les fueron atrofiando y sus hijos nacieron cada vez con ojos más chiquitos.”</i><br>a) ¿Qué científico habría estado de acuerdo? ¿Por qué?<br>b) Reescribí la explicación según Darwin.<br>c) ¿Por qué la reproducción sexual es importante para que este proceso ocurra?',
+  a:'a) <b>Lamarck</b>: usa la idea de “uso y desuso” y de que lo adquirido en vida se hereda.<br>b) <b>Darwin:</b> en la población de topos había variación en el tamaño de los ojos. Bajo tierra, los ojos grandes no daban ventaja y podían lastimarse o infectarse con la tierra; los topos con ojos pequeños sobrevivían y se reproducían más. Esa característica se heredaba y, con muchas generaciones, se volvió la más común.<br>c) Porque la meiosis y la fecundación generan <b>variabilidad</b> en los hijos: sin diferencias entre individuos, la selección natural no tiene sobre qué actuar.'}
+];
+const pr=document.getElementById('practice');
+PR.forEach((p,i)=>{const d=document.createElement('div');d.className='card';d.innerHTML=`<span class="lvl l${p.l}">${p.n}</span><h3 style="color:var(--c5)">Ejercicio ${i+1}</h3><p>${p.q}</p><textarea placeholder="Escribí tu respuesta acá…"></textarea><details><summary>🔍 Ver respuesta y justificación (¡primero intentalo!)</summary><p>${p.a}</p></details>`;pr.appendChild(d)});
+
+/* ---------- EXAMEN ---------- */
+const TOP={rep:['Reproducción','#e11d74'],div:['División celular','#2563eb'],sel:['Selección natural','#16a34a'],evo:['Evolución','#d97706']};
+const EX=[
+ {t:'rep',q:'¿Cuál es la principal ventaja de la reproducción sexual frente a la asexual?',o:['Es más rápida','Necesita un solo progenitor','Genera variabilidad en la descendencia','Produce más hijos'],a:2,e:'La mezcla de información de dos progenitores produce hijos distintos, lo que ayuda a la especie a adaptarse a cambios.'},
+ {t:'rep',q:'Las estrellas de mar pueden regenerar un individuo completo a partir de un brazo. Este tipo de reproducción se llama:',o:['Gemación','Fragmentación','Esporulación','Bipartición'],a:1,e:'Fragmentación: un trozo del cuerpo regenera un nuevo individuo.'},
+ {t:'rep',q:'Los peces y las ranas liberan sus gametos en el agua. Su fecundación es:',o:['Interna','Externa','Asexual','Cruzada interna'],a:1,e:'Cuando la unión de gametos ocurre fuera del cuerpo es fecundación externa.'},
+ {t:'rep',q:'¿Qué célula se forma inmediatamente después de la fecundación?',o:['Embrión','Gameto','Cigoto','Espora'],a:2,e:'El cigoto es la primera célula del nuevo individuo; luego se divide por mitosis y forma el embrión.'},
+ {t:'rep',q:'Un animal cuyo embrión se desarrolla dentro del cuerpo de la madre y se alimenta de ella es:',o:['Ovíparo','Vivíparo','Ovovivíparo','Hermafrodita'],a:1,e:'Vivíparo: el desarrollo ocurre dentro de la madre (ej.: la mayoría de los mamíferos).'},
+ {t:'div',q:'Las células del cuerpo humano tienen 46 cromosomas. Una célula de la piel que se divide por mitosis origina:',o:['2 células con 23 cromosomas','2 células con 46 cromosomas','4 células con 23 cromosomas','4 células con 46 cromosomas'],a:1,e:'La mitosis produce 2 células iguales a la madre: 46 cromosomas cada una.'},
+ {t:'div',q:'¿En qué fase de la mitosis los cromosomas se alinean en el centro de la célula?',o:['Profase','Metafase','Anafase','Telofase'],a:1,e:'En la metafase los cromosomas forman la placa ecuatorial.'},
+ {t:'div',q:'¿Para qué NO sirve la mitosis?',o:['Crecer','Cicatrizar heridas','Formar gametos','Reproducción asexual de organismos unicelulares'],a:2,e:'Los gametos se forman por meiosis, no por mitosis.'},
+ {t:'div',q:'El intercambio de fragmentos entre cromosomas durante la meiosis se llama:',o:['Citocinesis','Crossing-over (entrecruzamiento)','Fecundación','Duplicación'],a:1,e:'El crossing-over genera nuevas combinaciones de información: fuente de variabilidad.'},
+ {t:'div',q:'Durante la interfase, la célula:',o:['Descansa sin hacer nada','Duplica su ADN y crece','Separa los cromosomas','Divide el citoplasma'],a:1,e:'La interfase es la etapa más larga: la célula crece y copia su ADN.'},
+ {t:'sel',q:'¿Quiénes propusieron la teoría de la evolución por selección natural?',o:['Lamarck y Mendel','Darwin y Wallace','Pasteur y Darwin','Aristóteles y Lamarck'],a:1,e:'Darwin y Wallace llegaron a la misma idea de forma independiente.'},
+ {t:'sel',q:'En un bosque contaminado con troncos oscuros, después de varias generaciones se espera que:',o:['Aumenten las polillas claras','Aumenten las polillas oscuras','Las polillas claras se oscurezcan durante su vida','No haya cambios'],a:1,e:'Las oscuras están camufladas, los pájaros las comen menos y dejan más descendencia.'},
+ {t:'sel',q:'¿Cuál de estas afirmaciones es CORRECTA según la selección natural?',o:['Los individuos cambian porque lo necesitan','Los individuos mejor adaptados tienden a dejar más descendencia','Las características adquiridas en vida se heredan','El ambiente crea las variaciones'],a:1,e:'El éxito reproductivo diferencial es el corazón de la selección natural. El ambiente selecciona, pero no crea la variación.'},
+ {t:'sel',q:'Si se usa un insecticida durante años y cada vez funciona peor, es porque:',o:['Los insectos aprendieron a evitarlo','Sobrevivieron y se reprodujeron los insectos que ya eran resistentes','El insecticida se vence','Los insectos se acostumbraron durante su vida'],a:1,e:'Es selección natural: el insecticida elimina a los sensibles y quedan los resistentes, que heredan esa característica.'},
+ {t:'sel',q:'La cría de perros de distintas razas por parte del ser humano es un ejemplo de:',o:['Selección natural','Selección artificial','Mutación dirigida','Reproducción asexual'],a:1,e:'Cuando el ser humano elige quién se reproduce, se habla de selección artificial.'},
+ {t:'evo',q:'El ala de un murciélago y el brazo humano son:',o:['Órganos análogos','Órganos homólogos','Órganos vestigiales','No tienen relación'],a:1,e:'Tienen la misma estructura ósea con distinta función: homólogos, indican ancestro común.'},
+ {t:'evo',q:'Según Lamarck, las jirafas tienen el cuello largo porque:',o:['Las de cuello largo sobrevivieron más','Lo estiraron para alcanzar hojas y lo heredaron a sus crías','Hubo una mutación al azar','Fueron creadas así'],a:1,e:'Lamarck proponía el uso/desuso y la herencia de caracteres adquiridos.'},
+ {t:'evo',q:'El coxis humano (resto de una cola) es un ejemplo de órgano:',o:['Análogo','Homólogo','Vestigial','Embrionario'],a:2,e:'Los órganos vestigiales son restos sin función importante, heredados de ancestros.'},
+ {t:'evo',q:'¿Qué afirmación sobre humanos y chimpancés es correcta?',o:['Los humanos descienden de los chimpancés','Comparten un ancestro común','No tienen ningún parentesco','Los chimpancés descienden de los humanos'],a:1,e:'Ambas especies evolucionaron a partir de un ancestro común que vivió hace millones de años.'},
+ {t:'evo',q:'¿Cuál es la relación correcta entre los cuatro temas estudiados?',o:['La mitosis genera variabilidad → los individuos deciden adaptarse → evolución','La meiosis y la reproducción sexual generan variación → la selección natural actúa sobre ella → las especies evolucionan','La evolución produce la selección natural → que produce la meiosis','La reproducción asexual es la principal fuente de variación'],a:1,e:'La variación (meiosis, fecundación, mutaciones) es la “materia prima” sobre la que actúa la selección natural, motor de la evolución.'}
+];
+let order=[],tInt=null,secs=0;
+function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+document.getElementById('startEx').onclick=()=>{
+  order=EX.map((_,i)=>i);if(document.getElementById('shuffleChk').checked)order.sort(()=>Math.random()-.5);
+  const box=document.getElementById('exQs');box.innerHTML='';box.parentElement.classList.remove('done');
+  order.forEach((qi,n)=>{const q=EX[qi];const d=document.createElement('div');d.className='exq';d.dataset.q=qi;
+    d.innerHTML=`<div><span class="tag" style="background:${TOP[q.t][1]}">${TOP[q.t][0]}</span><b>${n+1}. ${q.q}</b></div>`+
+    q.o.map((o,i)=>`<label><input type="radio" name="q${qi}" value="${i}">${String.fromCharCode(97+i)}) ${o}</label>`).join('')+`<div class="exp">💬 ${q.e}</div>`;
+    box.appendChild(d)});
+  box.querySelectorAll('input').forEach(i=>i.onchange=()=>{document.getElementById('answered').textContent=box.querySelectorAll('input:checked').length});
+  document.getElementById('answered').textContent=0;
+  document.getElementById('exStart').style.display='none';document.getElementById('exRes').style.display='none';document.getElementById('exWrap').style.display='block';
+  document.getElementById('submitEx').disabled=false;
+  secs=0;clearInterval(tInt);document.getElementById('timer').textContent='00:00';tInt=setInterval(()=>{secs++;document.getElementById('timer').textContent=fmt(secs)},1000);
+};
+document.getElementById('submitEx').onclick=()=>{
+  const box=document.getElementById('exQs');const ans=box.querySelectorAll('input:checked').length;
+  if(ans<20&&!confirmInline())return;
+  clearInterval(tInt);let ok=0;const per={rep:[0,0],div:[0,0],sel:[0,0],evo:[0,0]};
+  box.querySelectorAll('.exq').forEach(d=>{const q=EX[d.dataset.q];const sel=d.querySelector('input:checked');per[q.t][1]++;
+    d.querySelectorAll('label').forEach((l,i)=>{l.querySelector('input').disabled=true;if(i===q.a)l.classList.add('right')});
+    if(sel&&+sel.value===q.a){ok++;per[q.t][0]++}else if(sel){sel.parentElement.classList.add('wrong')}});
+  box.parentElement.classList.add('done');document.getElementById('submitEx').disabled=true;
+  const nota=Math.max(1,Math.round(ok/2*10)/10);const ap=nota>=6;
+  const msgs=nota>=9?'🏆 ¡Excelente! Dominás los temas.':nota>=7?'🌟 ¡Muy bien! Repasá los detalles que fallaste.':nota>=6?'👍 Aprobado. Revisá los temas con menos aciertos.':'💪 Todavía no. Repasá la guía (sobre todo los temas en rojo) y volvé a intentarlo.';
+  const r=document.getElementById('exRes');r.style.display='block';
+  r.innerHTML=`<p>Tu nota</p><p class="grade" style="color:${ap?'var(--ok)':'var(--bad)'}">${nota.toString().replace('.',',')}</p><p><b>${ok}</b> de 20 correctas · Tiempo: ${fmt(secs)} · <b>${ap?'APROBADO ✅':'DESAPROBADO ❌'}</b></p><p style="font-size:1.1rem">${msgs}</p>
+  <div class="topicbars" style="max-width:520px;margin:16px auto;text-align:left">${Object.keys(per).map(k=>{const p=per[k][0]/per[k][1]*100;return `<div class="row"><span>${TOP[k][0]}</span><div class="t"><div style="width:${p}%;background:${p>=60?TOP[k][1]:'var(--bad)'}"></div></div><b>${per[k][0]}/${per[k][1]}</b></div>`}).join('')}</div>
+  <p class="hint">Abajo podés ver la corrección de cada pregunta con su explicación.</p>
+  <button class="btn" onclick="document.getElementById('exStart').style.display='block';document.getElementById('exWrap').style.display='none';this.parentElement.style.display='none';window.scrollTo({top:0})">🔁 Hacer el examen de nuevo</button>
+  <button class="btn ghost" onclick="window.print()">🖨️ Imprimir</button>`;
+  document.getElementById('exa').insertBefore(r,document.getElementById('exWrap'));
+  r.scrollIntoView({behavior:'smooth'});
+};
+let warned=false;
+function confirmInline(){if(warned){warned=false;return true}warned=true;const b=document.getElementById('submitEx');b.textContent='⚠️ Faltan preguntas. Tocá de nuevo para corregir igual';setTimeout(()=>{b.textContent='✅ Corregir examen';warned=false},4000);return false}
+</script>
+</body>
+</html>
