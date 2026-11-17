@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guía de Biología – 1er Año | Reproducción, División Celular, Selección Natural y Evolución</title>
+<title>Guía completa de Biología – 1er Año | Reproducción, División Celular, Selección Natural y Evolución</title>
 <style>
 :root{
   --bg:#f6f7fb; --card:#fff; --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb;
@@ -29,7 +29,7 @@ nav button[data-t="rep"].active{background:var(--c1)}
 nav button[data-t="div"].active{background:var(--c2)}
 nav button[data-t="sel"].active{background:var(--c3)}
 nav button[data-t="evo"].active{background:var(--c4)}
-nav button[data-t="pra"].active,nav button[data-t="exa"].active,nav button[data-t="tip"].active{background:var(--c5)}
+nav button[data-t="pra"].active,nav button[data-t="res"].active,nav button[data-t="cas"].active,nav button[data-t="exa"].active,nav button[data-t="tip"].active{background:var(--c5)}
 .progress{max-width:1100px;margin:10px auto 0;padding:0 16px;font-size:.85rem;color:var(--muted)}
 .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:4px}
 .bar>div{height:100%;width:0;background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c4));transition:width .5s}
@@ -161,10 +161,12 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 10px}
   <button data-t="sel">🦋 Selección natural</button>
   <button data-t="evo">🦴 Evolución</button>
   <button data-t="pra">✏️ Práctica</button>
-  <button data-t="exa">📝 Examen</button>
+  <button data-t="res">📄 Resumen</button>
+  <button data-t="exa">📝 Examen de repaso</button>
+  <button data-t="cas">🧪 Prueba de casos</button>
   <button data-t="tip">💡 Tips</button>
 </nav>
-<div class="progress">Tu recorrido: <b id="progTxt">1 de 7 secciones visitadas</b><div class="bar"><div id="progBar"></div></div></div>
+<div class="progress">Tu recorrido: <b id="progTxt">1 de 9 secciones visitadas</b><div class="bar"><div id="progBar"></div></div></div>
 
 <main>
 
@@ -462,6 +464,378 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 10px}
   <div class="card result" id="exRes" style="display:none"></div>
 </section>
 
+
+<!-- ======================= RESUMEN ======================= -->
+<section class="tab t-pur" id="res">
+  <div class="card hero"><div class="ico">📄</div><div><h2>Resumen de 2 carillas</h2><p>Modelo para <b>copiar a mano</b> (la profe pide que no sea impreso y que sea de máximo 2 carillas). Usá colores y dibujá los esquemas.</p>
+  <button class="btn" style="margin-top:8px" onclick="document.getElementById('fRes').contentWindow.print()">🖨️ Imprimir solo el resumen (A4, 2 páginas)</button></div></div>
+  <iframe id="fRes" class="emb" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Resumen Biología 1er Año – 2 carillas&lt;/title&gt;
+&lt;style&gt;
+@page{size:A4;margin:11mm}
+*{box-sizing:border-box}
+body{margin:0;background:#e5e7eb;font-family:&quot;Segoe UI&quot;,system-ui,Arial,sans-serif;color:#1f2937;font-size:10.4pt;line-height:1.38}
+.note{max-width:210mm;margin:14px auto;background:#fff7d6;border:2px dashed #f59e0b;border-radius:12px;padding:12px 16px;font-size:11pt}
+.page{width:210mm;min-height:297mm;margin:14px auto;background:#fff;padding:11mm 12mm;box-shadow:0 4px 18px rgba(0,0,0,.12);position:relative}
+.page .num{position:absolute;bottom:7mm;right:12mm;font-size:9pt;color:#9ca3af}
+h1{font-size:15pt;margin:0 0 4px;text-align:center}
+.sub{text-align:center;color:#6b7280;font-size:9.5pt;margin-bottom:8px}
+h2{font-size:11.5pt;margin:8px 0 4px;padding:3px 8px;border-radius:6px;color:#fff}
+.r h2{background:#e11d74}.d h2{background:#2563eb}.s h2{background:#16a34a}.e h2{background:#d97706}.v h2{background:#7c3aed}
+.r b{color:#be185d}.d b{color:#1d4ed8}.s b{color:#15803d}.e b{color:#b45309}.v b{color:#6d28d9}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+ul{margin:2px 0 4px;padding-left:16px}li{margin:1px 0}
+p{margin:3px 0}
+table{width:100%;border-collapse:collapse;font-size:9.4pt;margin:4px 0}
+th,td{border:1px solid #d1d5db;padding:3px 5px;vertical-align:top}
+th{background:#f3f4f6}
+.map{display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;font-weight:700;font-size:9.6pt;margin:4px 0 6px}
+.map span{padding:4px 8px;border-radius:8px;border:2px solid}
+.map i{font-style:normal;color:#6b7280}
+.box{border:2px solid #7c3aed;border-radius:8px;padding:6px 9px;margin:6px 0;background:#faf5ff}
+.warn{border-color:#dc2626;background:#fef2f2}
+.mini{font-size:9pt;color:#4b5563}
+@media print{body{background:#fff}.note{display:none}.page{margin:0;box-shadow:none;min-height:auto;page-break-after:always}}
+body{background:transparent}.page{margin:14px auto}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;note&quot;&gt;✍️ &lt;b&gt;Importante:&lt;/b&gt; la profe pide que el resumen sea &lt;b&gt;escrito a mano por el alumno&lt;/b&gt; (no impreso) y de &lt;b&gt;máximo 2 carillas&lt;/b&gt; de hoja de carpeta. Esto es un &lt;b&gt;modelo para copiar&lt;/b&gt;: usá colores para los títulos, dibujá los esquemas y escribí con letra clara (la prolijidad también suma). Copiarlo a mano además ayuda a memorizar. 🖨️ Si querés tenerlo de referencia en papel, imprimilo en A4: entra justo en 2 páginas.&lt;/div&gt;
+
+&lt;!-- =================== CARILLA 1 =================== --&gt;
+&lt;div class=&quot;page&quot;&gt;
+&lt;h1&gt;🧬 Resumen de Biología – 1er Año&lt;/h1&gt;
+&lt;div class=&quot;sub&quot;&gt;Reproducción · División celular · Selección natural · Evolución&lt;/div&gt;
+
+&lt;div class=&quot;map&quot;&gt;
+  &lt;span style=&quot;border-color:#e11d74&quot;&gt;Reproducción sexual&lt;/span&gt;&lt;i&gt;+&lt;/i&gt;&lt;span style=&quot;border-color:#2563eb&quot;&gt;Meiosis&lt;/span&gt;&lt;i&gt;+&lt;/i&gt;&lt;span style=&quot;border-color:#7c3aed&quot;&gt;Mutaciones&lt;/span&gt;&lt;i&gt;→&lt;/i&gt;&lt;span style=&quot;border-color:#7c3aed&quot;&gt;VARIACIÓN&lt;/span&gt;&lt;i&gt;→&lt;/i&gt;&lt;span style=&quot;border-color:#16a34a&quot;&gt;Selección natural&lt;/span&gt;&lt;i&gt;→&lt;/i&gt;&lt;span style=&quot;border-color:#d97706&quot;&gt;EVOLUCIÓN&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;r&quot;&gt;
+&lt;h2&gt;1. REPRODUCCIÓN&lt;/h2&gt;
+&lt;p&gt;Función por la cual un ser vivo origina individuos parecidos a él. &lt;b&gt;No es necesaria para vivir, pero sí para que la especie continúe.&lt;/b&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;th style=&quot;width:18%&quot;&gt;&lt;/th&gt;&lt;th&gt;ASEXUAL&lt;/th&gt;&lt;th&gt;SEXUAL&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Progenitores&lt;/td&gt;&lt;td&gt;Uno solo&lt;/td&gt;&lt;td&gt;Dos (o un hermafrodita)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Gametos&lt;/td&gt;&lt;td&gt;No hay&lt;/td&gt;&lt;td&gt;Sí: óvulo + espermatozoide (n)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;División&lt;/td&gt;&lt;td&gt;Mitosis&lt;/td&gt;&lt;td&gt;Meiosis (gametos) + mitosis (desarrollo)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Hijos&lt;/td&gt;&lt;td&gt;&lt;b&gt;Clones&lt;/b&gt;: idénticos al progenitor&lt;/td&gt;&lt;td&gt;&lt;b&gt;Distintos&lt;/b&gt; entre sí y de sus padres&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Ventaja&lt;/td&gt;&lt;td&gt;Rápida, muchos hijos, poca energía&lt;/td&gt;&lt;td&gt;&lt;b&gt;Variabilidad genética&lt;/b&gt; → mejor adaptación a cambios&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Desventaja&lt;/td&gt;&lt;td&gt;&lt;b&gt;Sin variación&lt;/b&gt;: si llega una plaga o cambia el ambiente, pueden morir todos&lt;/td&gt;&lt;td&gt;Más lenta, necesita encontrar pareja&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div class=&quot;cols&quot;&gt;
+&lt;div&gt;&lt;b&gt;Tipos de reproducción asexual:&lt;/b&gt;
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Bipartición:&lt;/b&gt; se divide en dos (bacterias).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Gemación:&lt;/b&gt; sale un brote (levaduras, hidras).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fragmentación:&lt;/b&gt; un trozo regenera todo (estrella de mar).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Esporulación:&lt;/b&gt; esporas (hongos, helechos).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Multiplicación vegetativa:&lt;/b&gt; tallos, tubérculos, gajos, hijuelos, estolones (papa, frutilla, banana).&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;div&gt;&lt;b&gt;Pasos de la reproducción sexual:&lt;/b&gt;
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Gametogénesis&lt;/b&gt;: se forman gametos por meiosis (n).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fecundación&lt;/b&gt;: se unen los gametos. &lt;b&gt;Externa&lt;/b&gt; (en el agua: peces, ranas) o &lt;b&gt;interna&lt;/b&gt; (mamíferos, aves, reptiles).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Cigoto&lt;/b&gt; (2n) → mitosis → &lt;b&gt;embrión&lt;/b&gt;.&lt;/li&gt;&lt;li&gt;Desarrollo: &lt;b&gt;ovíparo&lt;/b&gt; (huevo afuera), &lt;b&gt;vivíparo&lt;/b&gt; (dentro de la madre), &lt;b&gt;ovovivíparo&lt;/b&gt; (huevo que eclosiona adentro).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Plantas con flor:&lt;/b&gt; polinización → fecundación → óvulo = &lt;b&gt;semilla&lt;/b&gt;, ovario = &lt;b&gt;fruto&lt;/b&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;d&quot;&gt;
+&lt;h2&gt;2. DIVISIÓN CELULAR&lt;/h2&gt;
+&lt;p&gt;Toda célula proviene de otra célula. El ADN está en los &lt;b&gt;cromosomas&lt;/b&gt; (humanos: &lt;b&gt;46 = 23 pares&lt;/b&gt;). &lt;b&gt;Diploide (2n)&lt;/b&gt;: pares de cromosomas (células del cuerpo). &lt;b&gt;Haploide (n)&lt;/b&gt;: un solo juego (gametos: 23).&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Ciclo celular:&lt;/b&gt; &lt;b&gt;Interfase&lt;/b&gt; (la célula crece y &lt;b&gt;duplica su ADN&lt;/b&gt;; es la etapa más larga) → &lt;b&gt;División&lt;/b&gt; (mitosis o meiosis) → &lt;b&gt;Citocinesis&lt;/b&gt; (se divide el citoplasma).&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Fases de la mitosis&lt;/b&gt; (“&lt;b&gt;P&lt;/b&gt;apá &lt;b&gt;M&lt;/b&gt;e &lt;b&gt;A&lt;/b&gt;rmó &lt;b&gt;T&lt;/b&gt;odo”): &lt;b&gt;Profase&lt;/b&gt; (el ADN se condensa en cromosomas “X”, desaparece el núcleo) → &lt;b&gt;Metafase&lt;/b&gt; (se alinean en el centro) → &lt;b&gt;Anafase&lt;/b&gt; (se separan hacia los polos) → &lt;b&gt;Telofase&lt;/b&gt; (se forman 2 núcleos).&lt;/p&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;MITOSIS&lt;/th&gt;&lt;th&gt;MEIOSIS&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Divisiones&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2 (meiosis I y II)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Resultado&lt;/td&gt;&lt;td&gt;2 células &lt;b&gt;iguales&lt;/b&gt; · 2n → 2n&lt;/td&gt;&lt;td&gt;4 células &lt;b&gt;distintas&lt;/b&gt; · 2n → n&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Para qué&lt;/td&gt;&lt;td&gt;Crecer, reparar tejidos (cicatrizar), reproducción asexual&lt;/td&gt;&lt;td&gt;Formar &lt;b&gt;gametos&lt;/b&gt; (reproducción sexual)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Ejemplo humano&lt;/td&gt;&lt;td&gt;Célula de piel 46 → 2 de 46&lt;/td&gt;&lt;td&gt;Célula 46 → 4 gametos de 23 · 23 + 23 = 46&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;En la meiosis los cromosomas intercambian pedazos (&lt;b&gt;crossing-over o entrecruzamiento&lt;/b&gt;) y se reparten al azar → cada gameto es único → &lt;b&gt;VARIABILIDAD&lt;/b&gt;. Por eso los hermanos no son iguales.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;num&quot;&gt;Carilla 1&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- =================== CARILLA 2 =================== --&gt;
+&lt;div class=&quot;page&quot;&gt;
+&lt;div class=&quot;v&quot;&gt;
+&lt;h2&gt;🔑 VARIACIÓN GENÉTICA (la “materia prima” de la evolución)&lt;/h2&gt;
+&lt;p&gt;Los individuos de una misma especie son distintos entre sí. Esas diferencias vienen de:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Mutación:&lt;/b&gt; cambio &lt;b&gt;al azar&lt;/b&gt; en el ADN. Es la &lt;b&gt;fuente original&lt;/b&gt; de toda característica nueva. Puede ser perjudicial, neutra o beneficiosa. Solo se hereda si ocurre en los gametos. &lt;b&gt;No aparece porque el ser vivo la “necesite”.&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Reproducción sexual:&lt;/b&gt; meiosis (crossing-over + reparto al azar) + fecundación (mezcla de dos padres) &lt;b&gt;combinan&lt;/b&gt; las características de formas nuevas.&lt;/li&gt;&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;s&quot;&gt;
+&lt;h2&gt;3. SELECCIÓN NATURAL (Darwin y Wallace, 1859)&lt;/h2&gt;
+&lt;p&gt;El ambiente “favorece” a los individuos que &lt;b&gt;ya tenían&lt;/b&gt; una característica útil. Los 4 pasos:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;1. Variación:&lt;/b&gt; los individuos de una población son diferentes.&lt;/li&gt;&lt;li&gt;&lt;b&gt;2. Herencia:&lt;/b&gt; esas diferencias pasan de padres a hijos.&lt;/li&gt;&lt;li&gt;&lt;b&gt;3. Sobreproducción:&lt;/b&gt; nacen más de los que pueden sobrevivir → competencia por recursos.&lt;/li&gt;&lt;li&gt;&lt;b&gt;4. Supervivencia y reproducción diferencial:&lt;/b&gt; los mejor adaptados sobreviven y &lt;b&gt;dejan más hijos&lt;/b&gt;.&lt;/li&gt;&lt;/ul&gt;
+&lt;p&gt;→ Con muchas generaciones, la característica ventajosa se vuelve &lt;b&gt;más frecuente&lt;/b&gt; en la &lt;b&gt;población&lt;/b&gt;. &lt;b&gt;Adaptación:&lt;/b&gt; característica heredable que ayuda a sobrevivir y reproducirse en un ambiente. &lt;b&gt;Presión de selección:&lt;/b&gt; lo que “elimina” a algunos (depredador, plaga, antibiótico, clima).&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Selección artificial:&lt;/b&gt; el &lt;b&gt;ser humano&lt;/b&gt; elige quién se reproduce (razas de perros, vacas lecheras, frutas sin semillas, maíz).&lt;/p&gt;
+&lt;p class=&quot;mini&quot;&gt;&lt;b&gt;Ejemplos:&lt;/b&gt; polillas claras/oscuras en Inglaterra (bosques con hollín); bacterias resistentes a antibióticos; insectos resistentes a insecticidas.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;e&quot;&gt;
+&lt;h2&gt;4. EVOLUCIÓN&lt;/h2&gt;
+&lt;p&gt;Cambio de las especies a lo largo de &lt;b&gt;muchas generaciones&lt;/b&gt;. Todas las especies descienden de &lt;b&gt;ancestros comunes&lt;/b&gt; (el humano y el chimpancé comparten un ancestro; no descendemos del chimpancé). &lt;b&gt;Un individuo no evoluciona: evoluciona la población.&lt;/b&gt;&lt;/p&gt;
+&lt;div class=&quot;cols&quot;&gt;
+&lt;div&gt;&lt;b&gt;Lamarck (1809) ❌:&lt;/b&gt; uso y desuso de órganos + herencia de los caracteres adquiridos (“la jirafa estiró el cuello y se lo pasó a sus hijos”). Incorrecto: lo que adquirís en vida no se hereda.&lt;br&gt;&lt;b&gt;Darwin ✅:&lt;/b&gt; había jirafas de cuello largo y corto; las de cuello largo comían mejor, sobrevivían y tenían más crías.&lt;br&gt;&lt;b&gt;Teoría sintética (s. XX):&lt;/b&gt; Darwin + genética (mutaciones y herencia).&lt;/div&gt;
+&lt;div&gt;&lt;b&gt;Evidencias:&lt;/b&gt;
+&lt;ul&gt;&lt;li&gt;&lt;b&gt;Fósiles&lt;/b&gt; (paleontología): megaterio, gliptodonte.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Anatomía:&lt;/b&gt; órganos &lt;b&gt;homólogos&lt;/b&gt; (igual estructura, distinta función: brazo, ala de murciélago, aleta), &lt;b&gt;análogos&lt;/b&gt; (misma función, distinta estructura: ala de mariposa y de pájaro), &lt;b&gt;vestigiales&lt;/b&gt; (sin función: coxis).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Embriones&lt;/b&gt; parecidos · &lt;b&gt;ADN&lt;/b&gt; parecido · &lt;b&gt;Biogeografía&lt;/b&gt; (pinzones de Galápagos).&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;b&gt;Especie:&lt;/b&gt; grupo de individuos que pueden reproducirse entre sí y tener &lt;b&gt;hijos fértiles&lt;/b&gt;. Si se cruzan dos especies distintas, el &lt;b&gt;híbrido&lt;/b&gt; suele ser &lt;b&gt;estéril&lt;/b&gt; (mula = yegua × burro).&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;box warn&quot;&gt;
+&lt;b style=&quot;color:#dc2626&quot;&gt;🧭 CÓMO ANALIZAR UN CASO (para el examen)&lt;/b&gt;
+&lt;ul style=&quot;margin-bottom:0&quot;&gt;&lt;li&gt;¿Cómo se reproduce? &lt;b&gt;Asexual → clones, sin variación&lt;/b&gt; · &lt;b&gt;Sexual → variación&lt;/b&gt;.&lt;/li&gt;
+&lt;li&gt;¿De dónde salió la característica nueva? → &lt;b&gt;mutación&lt;/b&gt; (al azar) o &lt;b&gt;recombinación&lt;/b&gt; (reproducción sexual).&lt;/li&gt;
+&lt;li&gt;¿Quién elige? &lt;b&gt;El ambiente → selección natural&lt;/b&gt; · &lt;b&gt;El ser humano → selección artificial&lt;/b&gt;.&lt;/li&gt;
+&lt;li&gt;¿Cuál es la presión (plaga, depredador, clima)? ¿Quién sobrevive y &lt;b&gt;deja más hijos&lt;/b&gt;? ¿Qué pasa tras &lt;b&gt;muchas generaciones&lt;/b&gt;?&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;“¿Y si los cruzás?”&lt;/b&gt; → reproducción sexual: hijos &lt;b&gt;variados&lt;/b&gt; que mezclan características de ambos padres; algunos pueden heredar lo bueno de cada uno; hay que &lt;b&gt;seleccionar&lt;/b&gt; los mejores durante varias generaciones. Ojo: si son estériles o de especies distintas, no se puede (o el híbrido no es fértil).&lt;/li&gt;&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p class=&quot;mini&quot;&gt;✍️ &lt;b&gt;Ortografía que cuenta:&lt;/b&gt; célula, fecundación, reproducción, selección, evolución, variación, genética, mutación, división, núcleo, cromosómico, ambiente, población · &lt;b&gt;sin tilde:&lt;/b&gt; mitosis, meiosis, cigoto, gametos, haploide, diploide.&lt;/p&gt;
+&lt;div class=&quot;num&quot;&gt;Carilla 2&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+" style="width:100%;border:0;display:block;min-height:600px"></iframe>
+</section>
+
+<!-- ======================= PRUEBA DE CASOS ======================= -->
+<section class="tab t-pur" id="cas">
+  <div class="card hero"><div class="ico">🧪</div><div><h2>Prueba de análisis de casos</h2><p>Mismo formato que la prueba real: un texto largo + 4 multiple choice (1 pt c/u) + 2 de desarrollo (2 pts c/u) + 2 pts de prolijidad y escritura.</p></div></div>
+  <iframe id="fCas" class="emb" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+&lt;title&gt;Examen de Biología – Análisis de casos (1er Año)&lt;/title&gt;
+&lt;style&gt;
+:root{--p:#7c3aed;--ps:#efe7fd;--ok:#16a34a;--bad:#dc2626;--line:#e5e7eb;--muted:#6b7280}
+*{box-sizing:border-box}
+body{margin:0;font-family:&quot;Segoe UI&quot;,system-ui,Arial,sans-serif;background:#f6f7fb;color:#1f2937;line-height:1.6}
+header{background:linear-gradient(120deg,#1e3a8a,#7c3aed 60%,#16a34a);color:#fff;text-align:center;padding:26px 16px 60px}
+header h1{margin:0;font-size:clamp(1.5rem,4vw,2.2rem)}
+header p{margin:4px 0 0;opacity:.92}
+nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:1000px;margin:-40px auto 0;background:#fff;padding:10px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.08);position:sticky;top:0;z-index:10}
+nav button{border:0;background:transparent;padding:9px 14px;border-radius:12px;font-weight:700;cursor:pointer;color:var(--muted);font-size:.95rem}
+nav button.active{background:var(--p);color:#fff}
+main{max-width:1000px;margin:0 auto;padding:16px}
+.tab{display:none}.tab.show{display:block;animation:f .3s}
+@keyframes f{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin:14px 0;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+h2{margin-top:0}h3{color:var(--p);margin:.2em 0 .5em}
+.format{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.format div{border-radius:14px;padding:14px;text-align:center}
+.format .n{font-size:2rem;font-weight:900}
+.case{background:#fffdf5;border-left:6px solid #f59e0b;border-radius:12px;padding:16px 18px;font-size:1.02rem}
+.case h3{color:#b45309}
+.case p{margin:.5em 0;text-align:justify}
+.q{border:1px solid var(--line);border-radius:14px;padding:14px;margin:12px 0}
+.q .pts{float:right;background:var(--ps);color:var(--p);font-weight:800;font-size:.8rem;padding:2px 10px;border-radius:99px}
+.q label{display:block;padding:8px 12px;margin:6px 0;border:2px solid var(--line);border-radius:10px;cursor:pointer}
+.q label:hover{border-color:#c4b5fd}
+.q input[type=radio]{margin-right:8px;accent-color:var(--p)}
+.q label.right{border-color:var(--ok);background:#dcfce7}
+.q label.wrong{border-color:var(--bad);background:#fee2e2}
+.exp{display:none;background:#f5f3ff;border-radius:10px;padding:10px;margin-top:8px;font-size:.93rem}
+.graded .exp{display:block}
+textarea{width:100%;min-height:150px;border:1px solid #d1d5db;border-radius:10px;padding:10px;font-family:inherit;font-size:1rem;line-height:1.5}
+.rubric{display:none;margin-top:10px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:12px}
+.rubric.show{display:block}
+.rubric .self{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.rubric .self button,.wsel button{border:2px solid var(--line);background:#fff;border-radius:10px;padding:6px 12px;cursor:pointer;font-weight:700}
+.rubric .self button.on,.wsel button.on{border-color:var(--p);background:var(--ps);color:var(--p)}
+.btn{border:0;background:var(--p);color:#fff;font-weight:800;padding:10px 16px;border-radius:12px;cursor:pointer;font-size:.95rem}
+.btn.ghost{background:#fff;color:var(--p);border:2px solid var(--p)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.check label{display:flex;gap:8px;align-items:flex-start;padding:5px 0}
+.score{text-align:center}
+.score .big{font-size:3.6rem;font-weight:900;line-height:1;margin:6px 0}
+.rows .r{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:6px 0;max-width:420px;margin:auto}
+.solved{background:#f0fdf4;border-left:6px solid var(--ok);border-radius:12px;padding:12px 16px;margin:10px 0}
+.tag{display:inline-block;background:#dcfce7;color:#166534;font-weight:800;border-radius:99px;padding:1px 10px;font-size:.8rem}
+.hint{color:var(--muted);font-size:.9rem}
+.counter{font-size:.85rem;color:var(--muted);text-align:right}
+@media print{nav,.btn,.no-print{display:none!important}.tab{display:block!important}body{background:#fff}}
+header{display:none}nav{margin-top:0;position:static}body{background:transparent}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header&gt;
+  &lt;h1&gt;📝 Examen de Biología · Análisis de casos&lt;/h1&gt;
+  &lt;p&gt;1er Año · Reproducción · División celular · Selección natural · Evolución&lt;/p&gt;
+&lt;/header&gt;
+&lt;nav id=&quot;nav&quot;&gt;
+  &lt;button class=&quot;active&quot; data-t=&quot;info&quot;&gt;📋 Cómo es la prueba&lt;/button&gt;
+  &lt;button data-t=&quot;modelo&quot;&gt;✅ Caso resuelto: bananas&lt;/button&gt;
+  &lt;button data-t=&quot;ex1&quot;&gt;🥔 Examen 1&lt;/button&gt;
+  &lt;button data-t=&quot;ex2&quot;&gt;🐇 Examen 2&lt;/button&gt;
+&lt;/nav&gt;
+&lt;main&gt;
+
+&lt;!-- ================= INFO ================= --&gt;
+&lt;section class=&quot;tab show&quot; id=&quot;info&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h2&gt;📋 Así es la prueba&lt;/h2&gt;
+    &lt;p&gt;La prueba parte de &lt;b&gt;un texto largo sobre un caso real&lt;/b&gt;. Todas las preguntas se responden &lt;b&gt;pensando a partir del texto&lt;/b&gt;: no alcanza con copiar del resumen, hay que &lt;b&gt;relacionar&lt;/b&gt; lo que dice el caso con los conceptos.&lt;/p&gt;
+    &lt;div class=&quot;format&quot;&gt;
+      &lt;div style=&quot;background:#efe7fd&quot;&gt;&lt;div class=&quot;n&quot;&gt;4 × 1&lt;/div&gt;&lt;b&gt;Multiple choice&lt;/b&gt;&lt;br&gt;&lt;small&gt;“Según el caso, esto corresponde a…” (variación genética, mutación, selección artificial…)&lt;/small&gt;&lt;/div&gt;
+      &lt;div style=&quot;background:#e2f6e8&quot;&gt;&lt;div class=&quot;n&quot;&gt;2 × 2&lt;/div&gt;&lt;b&gt;Desarrollo&lt;/b&gt;&lt;br&gt;&lt;small&gt;Preguntas para pensar: “¿Qué pasaría si las cruzás?”, “¿Cómo lo harías?”, “¿Qué sucedería?”&lt;/small&gt;&lt;/div&gt;
+      &lt;div style=&quot;background:#fdf0dc&quot;&gt;&lt;div class=&quot;n&quot;&gt;2&lt;/div&gt;&lt;b&gt;Prolijidad y escritura&lt;/b&gt;&lt;br&gt;&lt;small&gt;Ortografía, tildes, comas y que se entienda lo que escribís.&lt;/small&gt;&lt;/div&gt;
+      &lt;div style=&quot;background:#e3ecfe&quot;&gt;&lt;div class=&quot;n&quot;&gt;= 10&lt;/div&gt;&lt;b&gt;Puntaje total&lt;/b&gt;&lt;br&gt;&lt;small&gt;Se aprueba con 6.&lt;/small&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;hint&quot;&gt;El resumen permitido es &lt;b&gt;escrito a mano&lt;/b&gt; por el alumno (máximo 2 carillas). En la prueba real el caso va a ser distinto al de las bananas.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h3&gt;🧭 Método para cualquier caso (5 preguntas que te hacés al leer)&lt;/h3&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;b&gt;¿Cómo se reproduce?&lt;/b&gt; Asexual = clones, todos iguales, sin variación. Sexual = hijos distintos, hay variación.&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;¿De dónde salió la característica nueva?&lt;/b&gt; De una &lt;b&gt;mutación&lt;/b&gt; (al azar) o de la &lt;b&gt;mezcla&lt;/b&gt; de la reproducción sexual.&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;¿Quién elige quién se reproduce?&lt;/b&gt; El ambiente → &lt;b&gt;selección natural&lt;/b&gt;. El ser humano → &lt;b&gt;selección artificial&lt;/b&gt;.&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;¿Cuál es la amenaza (presión de selección)?&lt;/b&gt; Una plaga, un depredador, un virus, el clima…&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;¿Qué pasa después de muchas generaciones?&lt;/b&gt; La característica que ayuda a sobrevivir se vuelve &lt;b&gt;más común&lt;/b&gt; en la población.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h3&gt;✍️ Cómo escribir las respuestas de desarrollo (2 puntos cada una)&lt;/h3&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;b&gt;Empezá retomando la pregunta:&lt;/b&gt; “Si se cruzaran las dos variedades, …”.&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;Usá el vocabulario de la materia:&lt;/b&gt; variación, reproducción sexual, gametos, selección, generaciones, población.&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;Explicá el porqué con conectores:&lt;/b&gt; &lt;i&gt;porque, por lo tanto, entonces, en cambio, a lo largo de varias generaciones&lt;/i&gt;.&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;Conectá con el texto:&lt;/b&gt; mencioná un dato del caso.&lt;/li&gt;
+      &lt;li&gt;&lt;b&gt;Releé al final:&lt;/b&gt; tildes (célula, reproducción, selección, genética), mayúscula después del punto, comas.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- ================= MODELO BANANAS ================= --&gt;
+&lt;section class=&quot;tab&quot; id=&quot;modelo&quot;&gt;
+  &lt;div class=&quot;card case&quot;&gt;
+    &lt;h3&gt;🍌 Caso modelo: las bananas que no tienen semillas&lt;/h3&gt;
+    &lt;p&gt;Las bananas silvestres, que todavía crecen en el sudeste de Asia, están llenas de semillas grandes y duras, tanto que casi no se pueden comer. Hace miles de años aparecieron por azar algunas plantas que daban frutos con semillas diminutas e incapaces de germinar. Los agricultores prefirieron esas plantas y empezaron a cultivarlas.&lt;/p&gt;
+    &lt;p&gt;Como las bananas de cultivo no tienen semillas fértiles, no se reproducen por semillas: se plantan los &lt;b&gt;hijuelos&lt;/b&gt;, brotes que crecen en la base de la planta madre. Así, todas las plantas de una misma variedad son prácticamente idénticas.&lt;/p&gt;
+    &lt;p&gt;Hasta 1950 la banana más vendida del mundo era la “Gros Michel”. Un hongo del suelo, que causa el “mal de Panamá”, atacó las plantaciones y destruyó casi todas, porque ninguna planta era resistente. Se reemplazó por la variedad “Cavendish”, que sí resistía ese hongo. Hoy una nueva cepa del hongo ataca también a la Cavendish, y los científicos buscan entre las bananas silvestres plantas resistentes para cruzarlas.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h3&gt;✅ Multiple choice resuelto&lt;/h3&gt;
+    &lt;div class=&quot;solved&quot;&gt;&lt;b&gt;1. La aparición de plantas con semillas diminutas corresponde a…&lt;/b&gt;&lt;br&gt;&lt;span class=&quot;tag&quot;&gt;Mutación&lt;/span&gt; Apareció &lt;b&gt;por azar&lt;/b&gt;, sin que nadie la buscara: es un cambio en el ADN.&lt;/div&gt;
+    &lt;div class=&quot;solved&quot;&gt;&lt;b&gt;2. Que los agricultores eligieran esas plantas para cultivar es un ejemplo de…&lt;/b&gt;&lt;br&gt;&lt;span class=&quot;tag&quot;&gt;Selección artificial&lt;/span&gt; Quien decide qué plantas se reproducen es el &lt;b&gt;ser humano&lt;/b&gt;, no el ambiente.&lt;/div&gt;
+    &lt;div class=&quot;solved&quot;&gt;&lt;b&gt;3. Plantar hijuelos es un tipo de…&lt;/b&gt;&lt;br&gt;&lt;span class=&quot;tag&quot;&gt;Reproducción asexual (multiplicación vegetativa)&lt;/span&gt; Hay un solo progenitor, no hay gametos y los hijos son &lt;b&gt;clones&lt;/b&gt;.&lt;/div&gt;
+    &lt;div class=&quot;solved&quot;&gt;&lt;b&gt;4. El hongo destruyó casi todas las Gros Michel porque…&lt;/b&gt;&lt;br&gt;&lt;span class=&quot;tag&quot;&gt;No había variación genética&lt;/span&gt; Todas eran clones: si una era sensible, todas lo eran. No había individuos distintos que pudieran sobrevivir.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;h3&gt;✅ Desarrollo resuelto (respuestas modelo)&lt;/h3&gt;
+    &lt;div class=&quot;solved&quot;&gt;&lt;b&gt;5. ¿Qué podría pasar si se cruzara una banana silvestre resistente con una Cavendish?&lt;/b&gt;
+    &lt;p&gt;Si se lograra cruzarlas, sería una &lt;b&gt;reproducción sexual&lt;/b&gt;: se unirían gametos de las dos plantas y los hijos tendrían una &lt;b&gt;mezcla&lt;/b&gt; de las características de ambas. Por eso, los hijos &lt;b&gt;no serían todos iguales&lt;/b&gt;: algunos podrían heredar la resistencia al hongo de la silvestre y el fruto sin semillas de la Cavendish, y otros no. Habría que &lt;b&gt;seleccionar&lt;/b&gt; durante varias generaciones las plantas con las dos características buenas y después multiplicarlas por hijuelos. Una dificultad es que la Cavendish casi no produce gametos fértiles, por eso el cruce es muy difícil.&lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&quot;solved&quot;&gt;&lt;b&gt;6. ¿Por qué la variedad silvestre es más “segura” frente a las plagas que la de cultivo?&lt;/b&gt;
+    &lt;p&gt;Porque la silvestre se reproduce por &lt;b&gt;semillas&lt;/b&gt;, es decir, en forma sexual, y entonces cada planta es &lt;b&gt;distinta&lt;/b&gt;. Si aparece una plaga, es probable que algunas plantas tengan por azar alguna resistencia, sobrevivan y se reproduzcan (&lt;b&gt;selección natural&lt;/b&gt;). Con el paso de las generaciones, la población se adapta. En cambio, en el cultivo todas las plantas son clones, y una sola plaga puede eliminarlas a todas.&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- ================= EXAMEN 1 / 2 (se completan por JS) ================= --&gt;
+&lt;section class=&quot;tab&quot; id=&quot;ex1&quot;&gt;&lt;/section&gt;
+&lt;section class=&quot;tab&quot; id=&quot;ex2&quot;&gt;&lt;/section&gt;
+
+&lt;/main&gt;
+&lt;script&gt;
+document.querySelectorAll(&#x27;#nav button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{
+  document.querySelectorAll(&#x27;#nav button&#x27;).forEach(x=&gt;x.classList.remove(&#x27;active&#x27;));b.classList.add(&#x27;active&#x27;);
+  document.querySelectorAll(&#x27;.tab&#x27;).forEach(t=&gt;t.classList.remove(&#x27;show&#x27;));document.getElementById(b.dataset.t).classList.add(&#x27;show&#x27;);scrollTo({top:0,behavior:&#x27;smooth&#x27;});
+});
+
+const EXAMS={
+ex1:{title:&#x27;🥔 Examen 1: La gran hambruna de la papa en Irlanda&#x27;,
+case:[
+&#x27;La papa es originaria de la cordillera de los Andes, donde los pueblos andinos la cultivan desde hace miles de años. Todavía hoy, en una misma chacra de Perú o Bolivia, un agricultor puede sembrar decenas de variedades distintas: papas amarillas, moradas, alargadas, redondas, algunas más resistentes al frío y otras a la sequía. Muchas de estas variedades nacieron de plantas que se cruzaron entre sí y produjeron semillas.&#x27;,
+&#x27;Los europeos llevaron la papa a su continente en el siglo XVI. En Irlanda se volvió el alimento principal de los campesinos pobres porque daba mucha comida en poco terreno. Los irlandeses elegían las plantas que más papas producían y casi siempre plantaban una sola variedad, llamada “Lumper”. Para sembrar no usaban semillas: enterraban trozos de los propios tubérculos de la cosecha anterior. Así, en todo el país crecían plantas prácticamente idénticas.&#x27;,
+&#x27;En 1845 llegó a Irlanda un microorganismo, el “tizón tardío”, que pudre las hojas y los tubérculos. En pocas semanas arrasó con casi todas las plantaciones. Durante cuatro años las cosechas se perdieron, cerca de un millón de personas murieron de hambre y otro millón emigró. En cambio, en los Andes nunca ocurrió una catástrofe de este tamaño: cuando una variedad enfermaba, otras sobrevivían.&#x27;,
+&#x27;Años después, unos investigadores encontraron en México una especie de papa silvestre, pequeña y de mal sabor, pero resistente al tizón. Comenzaron entonces a cruzarla con papas de cultivo para obtener nuevas variedades.&#x27;],
+mc:[
+{q:&#x27;Según el texto, que los irlandeses eligieran siempre las plantas que más papas producían corresponde a…&#x27;,o:[&#x27;Selección natural&#x27;,&#x27;Selección artificial&#x27;,&#x27;Mutación&#x27;,&#x27;Fecundación externa&#x27;],a:1,e:&#x27;Quien decide qué plantas se reproducen es el &lt;b&gt;ser humano&lt;/b&gt;, según lo que le conviene: es selección artificial.&#x27;},
+{q:&#x27;Plantar trozos de tubérculos de la cosecha anterior es un ejemplo de…&#x27;,o:[&#x27;Reproducción sexual por semillas&#x27;,&#x27;Esporulación&#x27;,&#x27;Reproducción asexual por multiplicación vegetativa&#x27;,&#x27;Meiosis&#x27;],a:2,e:&#x27;Hay un solo progenitor, no intervienen gametos y las plantas nuevas son &lt;b&gt;clones&lt;/b&gt;: es multiplicación vegetativa.&#x27;},
+{q:&#x27;La principal razón por la que el tizón destruyó casi todas las plantaciones de Irlanda fue…&#x27;,o:[&#x27;Que la papa era originaria de América&#x27;,&#x27;La falta de variación genética, porque todas las plantas eran clones&#x27;,&#x27;Que las papas mutaron para enfermarse&#x27;,&#x27;Que en Irlanda llovía demasiado&#x27;],a:1,e:&#x27;Como todas las plantas eran genéticamente iguales, si una era sensible al tizón, &lt;b&gt;todas lo eran&lt;/b&gt;. No había individuos diferentes que pudieran sobrevivir.&#x27;},
+{q:&#x27;Que en los Andes existan muchas variedades distintas, nacidas de plantas que se cruzaron y produjeron semillas, se explica principalmente por…&#x27;,o:[&#x27;La reproducción sexual, que genera variabilidad genética&#x27;,&#x27;La mitosis, que produce células distintas&#x27;,&#x27;La herencia de caracteres adquiridos, como decía Lamarck&#x27;,&#x27;La reproducción asexual por tubérculos&#x27;],a:0,e:&#x27;Las semillas se forman por &lt;b&gt;reproducción sexual&lt;/b&gt;: meiosis y fecundación mezclan la información de los dos padres y producen hijos &lt;b&gt;distintos&lt;/b&gt;.&#x27;}],
+dev:[
+{q:&#x27;Los investigadores cruzaron la papa silvestre mexicana (resistente al tizón, pero chica y fea) con una papa de cultivo (grande y rica). ¿Qué podría pasar con los hijos de ese cruce? ¿Serían todos iguales? ¿Qué harías vos para conseguir una papa grande, rica y resistente?&#x27;,
+r:[&#x27;Explica que el cruce es &lt;b&gt;reproducción sexual&lt;/b&gt; (gametos de los dos padres → mezcla de características).&#x27;,&#x27;Dice que los hijos serían &lt;b&gt;distintos entre sí&lt;/b&gt; (variación): algunos resistentes, otros no; algunos grandes, otros chicos.&#x27;,&#x27;Propone &lt;b&gt;seleccionar&lt;/b&gt; los que tengan las características buenas, volver a cruzarlos durante &lt;b&gt;varias generaciones&lt;/b&gt; y después multiplicarlos por tubérculos (asexual) para conservarlos iguales.&#x27;],
+m:&#x27;Al cruzar las dos papas se produce una reproducción sexual: se unen los gametos de ambas plantas y las semillas que se forman tienen una mezcla de las características de los dos padres. Por eso, los hijos no serían todos iguales: algunos podrían salir resistentes y chicos, otros grandes pero sensibles al tizón, y unos pocos podrían reunir las dos cosas buenas. Yo sembraría muchas semillas, expondría las plantas al tizón y elegiría las que sobrevivan y además den papas grandes y ricas (selección artificial). Las volvería a cruzar durante varias generaciones y, cuando tenga la papa ideal, la plantaría por trozos de tubérculo para que todas las plantas salgan iguales a ella.&#x27;},
+{q:&#x27;Imaginá que en el futuro aparece una nueva enfermedad que ataca a todas las papas. ¿Qué sería más probable: que sobrevivan las papas de una chacra andina o las de un campo donde se planta una sola variedad? Explicá por qué usando lo que estudiaste sobre selección natural.&#x27;,
+r:[&#x27;Elige la &lt;b&gt;chacra andina&lt;/b&gt; y justifica con la &lt;b&gt;variación genética&lt;/b&gt; (muchas variedades distintas).&#x27;,&#x27;Explica que entre plantas distintas es probable que &lt;b&gt;algunas ya tengan&lt;/b&gt; alguna resistencia, que esas sobrevivan y &lt;b&gt;se reproduzcan más&lt;/b&gt;.&#x27;,&#x27;Concluye que con las &lt;b&gt;generaciones&lt;/b&gt; la población se adapta (selección natural), mientras que los clones pueden morir todos juntos. Usa un dato del texto (Irlanda, 1845).&#x27;],
+m:&#x27;Sería más probable que sobrevivan las papas de la chacra andina, porque allí hay muchas variedades distintas, es decir, hay variación genética. Si aparece una enfermedad nueva, es posible que algunas de esas plantas ya tengan, por azar, alguna característica que las haga resistentes. Esas plantas sobrevivirían y dejarían más descendencia, y con el paso de las generaciones la población se iría adaptando: eso es selección natural. En cambio, en un campo con una sola variedad todas las plantas son clones, y si una es sensible, todas lo son, como pasó en Irlanda en 1845.&#x27;}]},
+
+ex2:{title:&#x27;🐇 Examen 2: Los conejos de Australia y el virus&#x27;,
+case:[
+&#x27;En 1859, un granjero llevó a Australia 24 conejos europeos para cazarlos como deporte. En Australia no había zorros ni otros depredadores que los cazaran, el clima era bueno y había mucho pasto. Los conejos se reproducen muy rápido: una hembra puede tener más de 30 crías por año. En pocas décadas había cientos de millones de conejos, que se comían los pastos de las ovejas y de los animales nativos.&#x27;,
+&#x27;Después de probar trampas, venenos y cercos sin éxito, en 1950 el gobierno liberó un virus llamado &lt;i&gt;mixoma&lt;/i&gt;, que enferma gravemente a los conejos. Al principio fue un éxito: murió más del 99% de los conejos infectados. Los campos volvieron a tener pasto.&#x27;,
+&#x27;Sin embargo, no todos los conejos murieron. Algunos pocos, por diferencias en su organismo que ya traían de nacimiento, lograron sobrevivir a la infección. Esos conejos tuvieron crías, y muchas de ellas también resistían al virus. Unos diez años después, el virus mataba a mucho menos de la mitad de los conejos infectados, y la población volvió a crecer.&#x27;,
+&#x27;Los científicos también notaron que el propio virus había cambiado: las formas del virus que mataban más lento se volvieron más comunes, porque el conejo enfermo vivía más tiempo y alcanzaba a contagiar a más conejos.&#x27;],
+mc:[
+{q:&#x27;Según el texto, que unos pocos conejos sobrevivieran al virus “por diferencias que ya traían de nacimiento” demuestra que en la población había…&#x27;,o:[&#x27;Variación genética&#x27;,&#x27;Selección artificial&#x27;,&#x27;Herencia de caracteres adquiridos&#x27;,&#x27;Reproducción asexual&#x27;],a:0,e:&#x27;Los conejos &lt;b&gt;no eran todos iguales&lt;/b&gt;: había diferencias heredables entre ellos. Eso es variación genética, y es lo que permite que actúe la selección.&#x27;},
+{q:&#x27;Que diez años después la mayoría de los conejos fueran resistentes es un ejemplo de…&#x27;,o:[&#x27;Selección artificial, porque el gobierno eligió a los conejos&#x27;,&#x27;Selección natural, porque los resistentes sobrevivieron y dejaron más crías&#x27;,&#x27;Mitosis, porque los conejos crecieron&#x27;,&#x27;Lamarckismo, porque los conejos se acostumbraron al virus&#x27;],a:1,e:&#x27;El virus fue la &lt;b&gt;presión de selección&lt;/b&gt;: eliminó a los sensibles, y los que ya eran resistentes sobrevivieron, se reprodujeron y &lt;b&gt;heredaron&lt;/b&gt; la resistencia a sus crías.&#x27;},
+{q:&#x27;Que una hembra pueda tener más de 30 crías por año y que no todas sobrevivan se relaciona con el paso de la selección natural llamado…&#x27;,o:[&#x27;Herencia&#x27;,&#x27;Sobreproducción (nacen más de los que pueden sobrevivir)&#x27;,&#x27;Mutación&#x27;,&#x27;Fecundación&#x27;],a:1,e:&#x27;Darwin señaló que nacen muchos más individuos de los que pueden sobrevivir: eso genera competencia y es la &lt;b&gt;sobreproducción&lt;/b&gt;.&#x27;},
+{q:&#x27;Un alumno escribió: “Los conejos se hicieron resistentes porque, al estar en contacto con el virus, su cuerpo se fue acostumbrando y les pasaron esa resistencia a sus hijos”. Esta explicación…&#x27;,o:[&#x27;Es correcta y corresponde a Darwin&#x27;,&#x27;Es incorrecta: se parece a la idea de Lamarck de heredar lo adquirido en vida&#x27;,&#x27;Es correcta porque los virus causan mutaciones&#x27;,&#x27;Es incorrecta porque los conejos se reproducen en forma asexual&#x27;],a:1,e:&#x27;Es la idea de &lt;b&gt;Lamarck&lt;/b&gt; (herencia de caracteres adquiridos). Según Darwin, la resistencia &lt;b&gt;ya existía&lt;/b&gt; en algunos conejos y el virus “seleccionó” a esos individuos.&#x27;}],
+dev:[
+{q:&#x27;Supongamos que se cruzan conejos resistentes al virus con conejos de una granja que nunca tuvieron contacto con él (y que no son resistentes). ¿Qué podría pasar con las crías? ¿Todas serían resistentes? Si el virus volviera a aparecer, ¿qué crías tendrían más chances de sobrevivir y por qué?&#x27;,
+r:[&#x27;Explica que el cruce es &lt;b&gt;reproducción sexual&lt;/b&gt; y que las crías reciben información de &lt;b&gt;los dos padres&lt;/b&gt;.&#x27;,&#x27;Dice que las crías &lt;b&gt;no serían todas iguales&lt;/b&gt;: algunas podrían heredar la resistencia y otras no.&#x27;,&#x27;Explica que, si vuelve el virus, sobrevivirían y se reproducirían más las &lt;b&gt;resistentes&lt;/b&gt; (selección natural), y que con las generaciones aumentarían en la población.&#x27;],
+m:&#x27;Si se cruzan conejos resistentes con conejos de granja, se produce una reproducción sexual: cada cría recibe la mitad de su información de cada padre, a través de los gametos. Por eso las crías no serían todas iguales: algunas podrían heredar la resistencia y otras no, porque en la meiosis y la fecundación las características se mezclan. Si el virus volviera a aparecer, tendrían más chances de sobrevivir las crías que heredaron la resistencia. Esas sobrevivirían, tendrían más crías y les pasarían esa característica, así que con varias generaciones la mayoría de la población volvería a ser resistente. Esto es selección natural.&#x27;},
+{q:&#x27;El gobierno australiano quiere volver a controlar a los conejos. Un funcionario propone liberar el mismo virus otra vez, pero mucho más fuerte. Usando lo que aprendiste en el caso, explicá qué podría pasar a largo plazo y propone otra idea, justificándola.&#x27;,
+r:[&#x27;Explica que al principio morirían muchos, pero que los pocos con alguna resistencia &lt;b&gt;sobrevivirían y se reproducirían&lt;/b&gt;.&#x27;,&#x27;Concluye que en algunas &lt;b&gt;generaciones&lt;/b&gt; la población volvería a ser resistente (o el virus cambiaría), como pasó en 1950: el problema vuelve.&#x27;,&#x27;Propone una alternativa razonable y la justifica (combinar varios métodos, cercos, controlar la reproducción, reintroducir depredadores con cuidado, etc.) relacionándola con lo estudiado.&#x27;],
+m:&#x27;Si se libera un virus más fuerte, al principio morirían muchísimos conejos. Pero, como en la población hay variación genética, es probable que algunos pocos tengan por azar una resistencia mayor. Esos sobrevivirían y se reproducirían muy rápido, porque los conejos tienen muchas crías por año. Con el paso de las generaciones, la población volvería a ser resistente, igual que pasó después de 1950. Además, el virus también podría cambiar. Por eso, propondría combinar varios métodos al mismo tiempo, por ejemplo, cercos, controlar su reproducción y proteger los pastos, porque es mucho más difícil que todos los conejos tengan, a la vez, defensas contra todas las estrategias.&#x27;}]}
+};
+
+const L=&#x27;abcd&#x27;;
+function build(id){
+  const E=EXAMS[id],s=document.getElementById(id);
+  let h=`&lt;div class=&quot;card&quot;&gt;&lt;h2&gt;${E.title}&lt;/h2&gt;&lt;p class=&quot;hint&quot;&gt;Leé el texto con atención (si querés, subrayá en papel). Después respondé. Puntaje: 4 multiple choice (1 punto c/u) + 2 desarrollo (2 puntos c/u) + prolijidad y escritura (2 puntos) = 10.&lt;/p&gt;
+  &lt;button class=&quot;btn ghost no-print&quot; onclick=&quot;window.print()&quot;&gt;🖨️ Imprimir para hacerlo en papel&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;card case&quot;&gt;&lt;h3&gt;📖 Leé el caso&lt;/h3&gt;${E.case.map(p=&gt;`&lt;p&gt;${p}&lt;/p&gt;`).join(&#x27;&#x27;)}&lt;/div&gt;
+  &lt;div class=&quot;card&quot; id=&quot;${id}-mc&quot;&gt;&lt;h3&gt;Parte A · Multiple choice&lt;/h3&gt;`;
+  E.mc.forEach((q,i)=&gt;{h+=`&lt;div class=&quot;q&quot;&gt;&lt;span class=&quot;pts&quot;&gt;1 punto&lt;/span&gt;&lt;b&gt;${i+1}. ${q.q}&lt;/b&gt;${q.o.map((o,j)=&gt;`&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;${id}m${i}&quot; value=&quot;${j}&quot;&gt;${L[j]}) ${o}&lt;/label&gt;`).join(&#x27;&#x27;)}&lt;div class=&quot;exp&quot;&gt;💬 ${q.e}&lt;/div&gt;&lt;/div&gt;`});
+  h+=`&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;&lt;h3&gt;Parte B · Desarrollo&lt;/h3&gt;&lt;p class=&quot;hint&quot;&gt;Escribí con oraciones completas, usando vocabulario de la materia y datos del texto.&lt;/p&gt;`;
+  E.dev.forEach((d,i)=&gt;{h+=`&lt;div class=&quot;q&quot;&gt;&lt;span class=&quot;pts&quot;&gt;2 puntos&lt;/span&gt;&lt;b&gt;${i+5}. ${d.q}&lt;/b&gt;&lt;textarea id=&quot;${id}t${i}&quot; placeholder=&quot;Escribí tu respuesta…&quot;&gt;&lt;/textarea&gt;&lt;div class=&quot;counter&quot; id=&quot;${id}c${i}&quot;&gt;0 palabras&lt;/div&gt;
+    &lt;div class=&quot;rubric&quot; id=&quot;${id}r${i}&quot;&gt;&lt;b&gt;📏 Qué tiene que tener una respuesta completa:&lt;/b&gt;&lt;ul&gt;${d.r.map(x=&gt;`&lt;li&gt;${x}&lt;/li&gt;`).join(&#x27;&#x27;)}&lt;/ul&gt;&lt;details&gt;&lt;summary&gt;&lt;b&gt;Ver respuesta modelo&lt;/b&gt;&lt;/summary&gt;&lt;p&gt;${d.m}&lt;/p&gt;&lt;/details&gt;
+    &lt;p style=&quot;margin:8px 0 0&quot;&gt;&lt;b&gt;Autoevaluate con honestidad:&lt;/b&gt; ¿cuántos de los 3 puntos de la lista cumple tu respuesta?&lt;/p&gt;
+    &lt;div class=&quot;self&quot; data-k=&quot;${id}d${i}&quot;&gt;&lt;button data-v=&quot;0&quot;&gt;0 o 1 de 3 → 0 pts&lt;/button&gt;&lt;button data-v=&quot;1&quot;&gt;2 de 3 → 1 pt&lt;/button&gt;&lt;button data-v=&quot;2&quot;&gt;3 de 3 → 2 pts&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`});
+  h+=`&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;&lt;h3&gt;Parte C · Prolijidad y escritura (2 puntos)&lt;/h3&gt;&lt;p class=&quot;hint&quot;&gt;Releé tus respuestas de desarrollo y marcá lo que cumplís:&lt;/p&gt;&lt;div class=&quot;check&quot; id=&quot;${id}w&quot;&gt;
+  &lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt; Puse tildes en las palabras clave (célula, reproducción, selección, genética, población, variación).&lt;/label&gt;
+  &lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt; Empecé las oraciones con mayúscula y terminé con punto.&lt;/label&gt;
+  &lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt; Usé comas y conectores (porque, por lo tanto, en cambio) y se entiende lo que quise decir.&lt;/label&gt;
+  &lt;label&gt;&lt;input type=&quot;checkbox&quot;&gt; No hay palabras repetidas de más ni oraciones sin terminar.&lt;/label&gt;&lt;/div&gt;
+  &lt;p class=&quot;hint&quot;&gt;4 tildes = 2 puntos · 2 o 3 = 1 punto · 0 o 1 = 0 puntos. En papel, además, cuenta la letra clara y la prolijidad.&lt;/p&gt;&lt;/div&gt;
+  &lt;div class=&quot;card no-print&quot; style=&quot;text-align:center&quot;&gt;&lt;button class=&quot;btn&quot; id=&quot;${id}go&quot;&gt;✅ Corregir multiple choice y ver criterios&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;card score&quot; id=&quot;${id}res&quot; style=&quot;display:none&quot;&gt;&lt;/div&gt;`;
+  s.innerHTML=h;
+  E.dev.forEach((d,i)=&gt;{const t=document.getElementById(id+&#x27;t&#x27;+i);t.oninput=()=&gt;{const n=t.value.trim()?t.value.trim().split(/\s+/).length:0;document.getElementById(id+&#x27;c&#x27;+i).textContent=n+&#x27; palabras&#x27;+(n&amp;&amp;n&lt;40?&#x27; · ¡desarrollá un poco más!&#x27;:&#x27;&#x27;)}});
+  s.querySelectorAll(&#x27;.self&#x27;).forEach(g=&gt;g.querySelectorAll(&#x27;button&#x27;).forEach(b=&gt;b.onclick=()=&gt;{g.querySelectorAll(&#x27;button&#x27;).forEach(x=&gt;x.classList.remove(&#x27;on&#x27;));b.classList.add(&#x27;on&#x27;);g.dataset.v=b.dataset.v;calc(id)}));
+  s.querySelectorAll(&#x27;#&#x27;+id+&#x27;w input&#x27;).forEach(c=&gt;c.onchange=()=&gt;calc(id));
+  document.getElementById(id+&#x27;go&#x27;).onclick=()=&gt;{
+    const mc=document.getElementById(id+&#x27;-mc&#x27;);mc.classList.add(&#x27;graded&#x27;);
+    E.mc.forEach((q,i)=&gt;{const ls=mc.querySelectorAll(`input[name=${id}m${i}]`);ls.forEach((inp,j)=&gt;{inp.disabled=true;if(j===q.a)inp.parentElement.classList.add(&#x27;right&#x27;);else if(inp.checked)inp.parentElement.classList.add(&#x27;wrong&#x27;)})});
+    E.dev.forEach((d,i)=&gt;document.getElementById(id+&#x27;r&#x27;+i).classList.add(&#x27;show&#x27;));
+    document.getElementById(id+&#x27;go&#x27;).disabled=true;calc(id);
+    document.getElementById(id+&#x27;res&#x27;).style.display=&#x27;block&#x27;;
+    mc.scrollIntoView({behavior:&#x27;smooth&#x27;});
+  };
+}
+function calc(id){
+  const E=EXAMS[id];if(!document.getElementById(id+&#x27;go&#x27;).disabled)return;
+  const mc=document.getElementById(id+&#x27;-mc&#x27;);let a=0;E.mc.forEach((q,i)=&gt;{const c=mc.querySelector(`input[name=${id}m${i}]:checked`);if(c&amp;&amp;+c.value===q.a)a++});
+  const ds=[...document.querySelectorAll(&#x27;#&#x27;+id+&#x27; .self&#x27;)];const dv=ds.map(g=&gt;g.dataset.v===undefined?null:+g.dataset.v);
+  const w=document.querySelectorAll(&#x27;#&#x27;+id+&#x27;w input:checked&#x27;).length;const wp=w&gt;=4?2:w&gt;=2?1:0;
+  const pend=dv.some(v=&gt;v===null);const tot=a+dv.reduce((s,v)=&gt;s+(v||0),0)+wp;
+  const r=document.getElementById(id+&#x27;res&#x27;);
+  r.innerHTML=`&lt;h3&gt;📊 Tu resultado&lt;/h3&gt;&lt;div class=&quot;rows&quot;&gt;
+   &lt;div class=&quot;r&quot;&gt;&lt;span&gt;Parte A · Multiple choice&lt;/span&gt;&lt;b&gt;${a} / 4&lt;/b&gt;&lt;/div&gt;
+   &lt;div class=&quot;r&quot;&gt;&lt;span&gt;Parte B · Pregunta 5&lt;/span&gt;&lt;b&gt;${dv[0]===null?&#x27;⏳ autoevaluate&#x27;:dv[0]+&#x27; / 2&#x27;}&lt;/b&gt;&lt;/div&gt;
+   &lt;div class=&quot;r&quot;&gt;&lt;span&gt;Parte B · Pregunta 6&lt;/span&gt;&lt;b&gt;${dv[1]===null?&#x27;⏳ autoevaluate&#x27;:dv[1]+&#x27; / 2&#x27;}&lt;/b&gt;&lt;/div&gt;
+   &lt;div class=&quot;r&quot;&gt;&lt;span&gt;Parte C · Escritura&lt;/span&gt;&lt;b&gt;${wp} / 2&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;
+   &lt;div class=&quot;big&quot; style=&quot;color:${tot&gt;=6?&#x27;var(--ok)&#x27;:&#x27;var(--bad)&#x27;}&quot;&gt;${tot}&lt;small style=&quot;font-size:1.4rem;color:#6b7280&quot;&gt; / 10&lt;/small&gt;&lt;/div&gt;
+   &lt;p&gt;&lt;b&gt;${pend?&#x27;Completá la autoevaluación del desarrollo (más arriba) para ver la nota final.&#x27;:tot&gt;=9?&#x27;🏆 ¡Excelente! Estás listo/a para la prueba.&#x27;:tot&gt;=6?&#x27;👍 Aprobado. Repasá las respuestas modelo para sumar más puntos.&#x27;:&#x27;💪 Todavía no. Releé el resumen, mirá el caso resuelto de las bananas y probá el otro examen.&#x27;}&lt;/b&gt;&lt;/p&gt;`;
+}
+build(&#x27;ex1&#x27;);build(&#x27;ex2&#x27;);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+" style="width:100%;border:0;display:block;min-height:600px"></iframe>
+</section>
+
 <!-- ======================= TIPS ======================= -->
 <section class="tab t-pur" id="tip">
   <div class="card hero"><div class="ico">💡</div><div><h2>Tips de estudio para 1er año</h2><p>El secundario pide más autonomía. ¡Estas estrategias te van a ayudar!</p></div></div>
@@ -486,7 +860,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:30px 10px}
 <script>
 /* ---------- NAV ---------- */
 const visited=new Set(['rep']);
-function updProg(){const n=visited.size;document.getElementById('progTxt').textContent=n+' de 7 secciones visitadas';document.getElementById('progBar').style.width=(n/7*100)+'%';}
+function updProg(){const n=visited.size;document.getElementById('progTxt').textContent=n+' de 9 secciones visitadas';document.getElementById('progBar').style.width=(n/9*100)+'%';}
 document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('#nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
   document.querySelectorAll('section.tab').forEach(s=>s.classList.remove('show'));document.getElementById(b.dataset.t).classList.add('show');
@@ -660,6 +1034,11 @@ document.getElementById('submitEx').onclick=()=>{
 };
 let warned=false;
 function confirmInline(){if(warned){warned=false;return true}warned=true;const b=document.getElementById('submitEx');b.textContent='⚠️ Faltan preguntas. Tocá de nuevo para corregir igual';setTimeout(()=>{b.textContent='✅ Corregir examen';warned=false},4000);return false}
+
+/* ---------- IFRAMES EMBEBIDOS ---------- */
+function fitFrame(f){try{const d=f.contentDocument;if(!d||!d.body)return;f.style.height=Math.max(600,d.documentElement.scrollHeight)+'px'}catch(e){}}
+document.querySelectorAll('iframe.emb').forEach(f=>{f.addEventListener('load',()=>{fitFrame(f);try{new ResizeObserver(()=>fitFrame(f)).observe(f.contentDocument.body);f.contentDocument.addEventListener('click',()=>setTimeout(()=>fitFrame(f),60))}catch(e){}})});
+document.querySelectorAll('#nav button').forEach(b=>b.addEventListener('click',()=>setTimeout(()=>document.querySelectorAll('iframe.emb').forEach(fitFrame),50)));
 </script>
 </body>
 </html>
